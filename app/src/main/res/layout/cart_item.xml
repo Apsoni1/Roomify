@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.Cart"
+    android:background="@color/white">
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="30dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="136dp"
+                android:layout_height="145dp"
+
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:src="@drawable/chair" />
+
+
+            <TextView
+                android:id="@+id/itemName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="70dp"
+                android:layout_toEndOf="@id/itemImage"
+                android:background="@color/white"
+                android:fontFamily="sans-serif-medium"
+                android:text="Item Name"
+                android:textColor="#FF0000"
+                android:textSize="22sp" />
+
+
+            <TextView
+                android:id="@+id/itemPrice"
+                android:layout_width="137dp"
+                android:layout_height="23dp"
+                android:layout_below="@id/itemName"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="119dp"
+                android:layout_toEndOf="@id/itemImage"
+                android:background="@color/white"
+                android:fontFamily="sans-serif-medium"
+                android:text="Item Price"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+
+            <LinearLayout
+                android:layout_width="182dp"
+                android:layout_height="41dp"
+                android:layout_alignTop="@+id/itemPrice"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="78dp"
+                android:layout_marginEnd="76dp"
+                android:layout_marginBottom="17dp"
+                android:layout_toEndOf="@+id/itemImage">
+
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="match_parent"
+
+                    ></ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Delivery by DATE"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    >
+
+                </TextView>
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="117dp"
+                android:layout_height="33dp"
+                android:layout_below="@id/itemPrice"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="141dp"
+                android:layout_toEndOf="@+id/itemImage"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/cancelImageView"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="10dp"
+
+                    android:contentDescription="Cancel"
+                    android:src="@drawable/minus" />
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="0dp"
+                    android:text="1"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <ImageView
+                    android:id="@+id/buyNowImageView"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="3dp"
+                    android:contentDescription="Buy Now"
+                    android:src="@drawable/plus" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/bin" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</FrameLayout>
