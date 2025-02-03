@@ -19,9 +19,6 @@ local.properties
 *.jks
 *.keystore
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
-
 # Android Profiling
 *.hprof
 
@@ -29,4 +26,4 @@ keystore.properties
 
 app/release/
 app/debug/
-*.idea/
+.idea
