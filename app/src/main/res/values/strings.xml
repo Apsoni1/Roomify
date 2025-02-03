@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name" translatable="false">Roomify</string>
+    <string name="string0">Information and support</string>
+    <string name="string1">Policies and Terms and Conditions</string>
+    <string name="string2">Customer support</string>
+    <string name="string3">About the app</string>
+    <string name="string4">App settings</string>
+    <string name="string5">Data preferences</string>
+    <string name="string6">Theme</string>
+    <string name="string7">Your orders</string>
+    <string name="string8">Buy Again</string>
+    <string name="string9">Your Account</string>
+    <string name="string10">Your Lists</string>
+    <string name="string11">Language &amp; Region</string>
+    <string name="string12">Shop by Categories</string>
+    <string name="string13">Categories</string>
+    <string name="string14"></string>
+    <string name="string15"></string>
+    <string name="string16"></string>
+    <string name="string17"></string>
+    <string name="string18"></string>
+    <string name="string19"></string>
+    <string name="string20"></string>
+    <string name="string21"></string>
+    <string name="string22"></string>
+    <string name="string23"></string>
+    <string name="string24"></string>
+    <string name="string25"></string>
+    <string name="string26"></string>
+    <string name="string27"></string>
+    <string name="string28"></string>
+    <string name="string29"></string>
+    <string name="string30"></string>
+    <string name="string31"></string>
+    <string name="string32"></string>
+    <string name="string33"></string>
+    <string name="string34"></string>
+    <string name="string35"></string>
+    <string name="string36"></string>
+    <string name="string37"></string>
+    <string name="string38"></string>
+    <string name="string39"></string>
+    <string name="string40"></string>
+    <string name="string41"></string>
+    <string name="string42"></string>
+    <string name="string43"></string>
+    <string name="string44"></string>
+    <string name="string45"></string>
+    <string name="string46"></string>
+    <string name="string47"></string>
+    <string name="string48"></string>
+    <string name="string49"></string>
+    <string name="string50"></string>
+    <string name="string51"></string>
+    <string name="string52"></string>
+    <string name="string53"></string>
+    <string name="string54"></string>
+
+    <string name="discount_poster" translatable="false">discount poster\n\n</string>
+
+
+</resources>

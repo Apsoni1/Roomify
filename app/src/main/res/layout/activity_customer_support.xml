@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".Activity.CustomerSupport">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_marginTop="35sp"
+        android:layout_marginHorizontal="25sp"
+        android:elevation="8sp"
+        app:riv_corner_radius="15sp"
+        android:src="@drawable/img_5"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+
+    </com.makeramen.roundedimageview.RoundedImageView>
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_marginHorizontal="25sp"
+        android:elevation="8sp"
+        app:riv_corner_radius="15sp"
+        android:src="@drawable/img_6"
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
+
+
+    </com.makeramen.roundedimageview.RoundedImageView>
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_marginHorizontal="25sp"
+        android:elevation="8sp"
+        app:riv_corner_radius="15sp"
+        android:src="@drawable/img_7"
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
+
+
+    </com.makeramen.roundedimageview.RoundedImageView>
+
+
+
+</LinearLayout>

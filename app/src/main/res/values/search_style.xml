@@ -1,0 +1,6 @@
+<resources>
+    <style name="CustomSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="queryBackground">@drawable/search_shape</item>
+        <item name="searchIcon">@drawable/search_icon</item>
+    </style>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Home"
+        android:id="@+id/home"
+        android:enabled="true"
+        app:cnb_iconColor="#2B2281"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="#2B2281"
+        android:icon="@drawable/homeicon"
+        ></item>
+    <item
+        android:title="Category"
+        android:id="@+id/category"
+        android:icon="@drawable/categoryicon"
+        android:enabled="true"
+        app:cnb_iconColor="#2B2281"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="#2B2281"
+        ></item>
+    <item
+        android:title="My Cart"
+        android:id="@+id/cart"
+        android:icon="@drawable/carticon"
+        android:enabled="true"
+        app:cnb_iconColor="#2B2281"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="#2B2281"
+        ></item>
+
+    <item
+        android:title="My Account"
+        android:id="@+id/account"
+        android:icon="@drawable/myaccount"
+        android:enabled="true"
+        app:cnb_iconColor="#2B2281"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="#2B2281"
+        ></item>
+</menu>
