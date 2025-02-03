@@ -1,4 +1,4 @@
-package com.majorproject.roomify.Fragments
+package com.majorproject.roomify.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,15 +8,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.majorproject.roomify.Activity.AboutApp
-import com.majorproject.roomify.Activity.ChooseLanguage
-import com.majorproject.roomify.Activity.ChooseTheme
-import com.majorproject.roomify.Activity.CustomerSupport
-import com.majorproject.roomify.Activity.TermsAndConditions
-import com.majorproject.roomify.Activity.YourAccount
-import com.majorproject.roomify.Activity.YourOrders
+import com.majorproject.roomify.activity.AboutApp
+import com.majorproject.roomify.activity.ChooseLanguage
+import com.majorproject.roomify.activity.ChooseTheme
+import com.majorproject.roomify.activity.CustomerSupport
+import com.majorproject.roomify.activity.TermsAndConditions
+import com.majorproject.roomify.activity.YourAccount
+import com.majorproject.roomify.activity.YourOrders
 import com.majorproject.roomify.R
-import com.majorproject.roomify.SavePref
 
 
 class Myaccount : Fragment() {
@@ -50,7 +49,6 @@ class Myaccount : Fragment() {
         yourAccountBtn = view.findViewById(R.id.yourAccountBtn)
         yourListBtn = view.findViewById(R.id.yourListBtn)
 
-        val savePref = SavePref(context)
 
 
 

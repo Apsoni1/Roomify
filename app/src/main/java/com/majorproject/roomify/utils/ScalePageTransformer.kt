@@ -1,4 +1,4 @@
-package com.majorproject.roomify.Utils
+package com.majorproject.roomify.utils
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2

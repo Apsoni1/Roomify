@@ -1,4 +1,4 @@
-package com.majorproject.roomify.Adapters
+package com.majorproject.roomify.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
