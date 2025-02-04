@@ -1,4 +1,4 @@
-package com.majorproject.roomify.Fragments
+package com.majorproject.roomify.fragments
 
 import android.os.Bundle
 import android.os.Handler
@@ -12,9 +12,8 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.majorproject.roomify.Adapters.CategoryViewPagerAdapter
+import com.majorproject.roomify.adapters.CategoryViewPagerAdapter
 import com.majorproject.roomify.R
-import com.majorproject.roomify.Utils.ScalePageTransformer
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 
 class Category : Fragment() {

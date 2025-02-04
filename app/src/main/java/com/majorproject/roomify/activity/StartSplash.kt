@@ -1,9 +1,8 @@
-package com.majorproject.roomify.Activity
+package com.majorproject.roomify.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
 import android.view.WindowManager
 import com.majorproject.roomify.R
 import kotlinx.coroutines.CoroutineScope

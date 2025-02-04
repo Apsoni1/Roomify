@@ -1,13 +1,13 @@
-package com.majorproject.roomify.Activity
+package com.majorproject.roomify.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
-import com.majorproject.roomify.Fragments.Cart
-import com.majorproject.roomify.Fragments.Home
-import com.majorproject.roomify.Fragments.Myaccount
-import com.majorproject.roomify.Fragments.Category
+import com.majorproject.roomify.fragments.Cart
+import com.majorproject.roomify.fragments.Home
+import com.majorproject.roomify.fragments.Myaccount
+import com.majorproject.roomify.fragments.Category
 import com.majorproject.roomify.R
 
 class MainActivity : AppCompatActivity() {

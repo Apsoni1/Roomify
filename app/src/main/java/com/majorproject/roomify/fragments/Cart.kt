@@ -1,4 +1,4 @@
-package com.majorproject.roomify.Fragments
+package com.majorproject.roomify.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

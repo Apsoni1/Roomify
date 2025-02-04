@@ -1,13 +1,13 @@
-package com.majorproject.roomify.Activity
+package com.majorproject.roomify.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.majorproject.roomify.R
 
-class ChooseTheme : AppCompatActivity() {
+class YourOrders : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_choose_theme)
+        setContentView(R.layout.activity_your_orders)
     }
     override fun onBackPressed() {
         super.onBackPressed()

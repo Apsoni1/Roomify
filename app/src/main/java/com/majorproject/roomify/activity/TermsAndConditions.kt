@@ -1,13 +1,13 @@
-package com.majorproject.roomify.Activity
+package com.majorproject.roomify.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.majorproject.roomify.R
 
-class CustomerSupport : AppCompatActivity() {
+class TermsAndConditions : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_customer_support)
+        setContentView(R.layout.activity_terms_and_conditions)
     }
     override fun onBackPressed() {
         super.onBackPressed()

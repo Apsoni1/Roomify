@@ -1,4 +1,4 @@
-package com.majorproject.roomify.Fragments
+package com.majorproject.roomify.fragments
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Rect
@@ -21,7 +21,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.majorproject.roomify.Adapters.ViewPagerAdapterHome
+import com.majorproject.roomify.adapters.ViewPagerAdapterHome
 import com.majorproject.roomify.R
 
 class Home : Fragment() {
