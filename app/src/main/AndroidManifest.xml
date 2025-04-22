@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".di.BaseApplication"
+        android:name=".core.di.BaseApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,28 +14,28 @@
         android:theme="@style/Theme.Roomify"
         tools:targetApi="31">
         <activity
-            android:name=".activity.YourAccount"
+            android:name=".feature.account.presentaition.screens.YourAccount"
             android:exported="false" />
         <activity
-            android:name=".activity.YourOrders"
+            android:name=".feature.orders.presentaition.screens.YourOrders"
             android:exported="false" />
         <activity
-            android:name=".activity.AboutApp"
+            android:name=".feature.about.presentaition.screens.AboutApp"
             android:exported="false" />
         <activity
-            android:name=".activity.CustomerSupport"
+            android:name=".feature.support.presentaition.screens.CustomerSupport"
             android:exported="false" />
         <activity
-            android:name=".activity.TermsAndConditions"
+            android:name=".feature.terms.presentaition.screens.TermsAndConditions"
             android:exported="false" />
         <activity
-            android:name=".activity.ChooseTheme"
+            android:name=".feature.settings.presentaition.screens.ChooseTheme"
             android:exported="false" />
         <activity
-            android:name=".activity.ChooseLanguage"
+            android:name=".feature.settings.presentaition.screens.ChooseLanguage"
             android:exported="false" />
         <activity
-            android:name=".activity.StartSplash"
+            android:name=".feature.splash.presentaition.screens.StartSplash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".MainActivity"
             android:exported="false" />
     </application>
 

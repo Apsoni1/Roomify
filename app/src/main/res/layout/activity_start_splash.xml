@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_start_splash_scene"
-    tools:context=".activity.StartSplash">
+    tools:context=".feature.splash.presentaition.screens.StartSplash">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@drawable/splash_bg"
