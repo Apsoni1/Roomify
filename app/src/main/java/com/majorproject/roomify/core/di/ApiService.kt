@@ -42,13 +42,6 @@ sealed class Result<out T> {
 
 
 
-@Singleton
-class ProductRepository @Inject constructor(
-    private val api: ApiService
-) {
-    fun pagingSource() = ProductPagingSource(api)
-}
-
 
 
 
