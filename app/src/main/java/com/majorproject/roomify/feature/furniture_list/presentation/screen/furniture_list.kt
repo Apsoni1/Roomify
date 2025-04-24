@@ -1,21 +1,27 @@
 package com.majorproject.roomify.feature.furniture_list.presentation.screen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.majorproject.roomify.R
-import com.majorproject.roomify.core.di.ProductViewModel
+import com.majorproject.roomify.feature.furniture_list.data.dto.ProductDto
 import com.majorproject.roomify.feature.furniture_list.presentation.adapter.FurnitureLoadStateAdapter
 import com.majorproject.roomify.feature.furniture_list.presentation.adapter.FurniturePagingAdapter
+import com.majorproject.roomify.feature.furniture_list.presentation.viewmodel.ProductViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class FurnitureListActivity : AppCompatActivity() {
@@ -31,21 +37,21 @@ class FurnitureListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_furniture_list)
 
         // View binding
-        recyclerView      = findViewById(R.id.rvFurniture)
-        errorTextView     = findViewById(R.id.errorTextView)
-        fullScreenProgress= findViewById(R.id.fullScreenProgress)
-        fullScreenError   = findViewById(R.id.fullScreenError)
+        recyclerView       = findViewById(R.id.rvFurniture)
+        errorTextView      = findViewById(R.id.errorTextView)
+        fullScreenProgress = findViewById(R.id.fullScreenProgress)
+        fullScreenError    = findViewById(R.id.fullScreenError)
 
         // 1) Adapter + footer
-        val pagingAdapter = FurniturePagingAdapter()
-        val footerAdapter = FurnitureLoadStateAdapter { pagingAdapter.retry() }
-
+        val pagingAdapter  = FurniturePagingAdapter()
+        val footerAdapter  = FurnitureLoadStateAdapter { pagingAdapter.retry() }
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = pagingAdapter.withLoadStateFooter(footerAdapter)
+        recyclerView.adapter        = pagingAdapter.withLoadStateFooter(footerAdapter)
 
-        // 2) Initial/load‑error UI via loadStateFlow
-        lifecycleScope.launchWhenStarted {
-            pagingAdapter.loadStateFlow.collectLatest { loadStates ->
+        // 2) Initial / loading / error UI via loadStateFlow
+        lifecycleScope.launch {
+            pagingAdapter.loadStateFlow.collectLatest { loadStates: CombinedLoadStates ->
+                Log.d("LoadStates", "Refresh=${loadStates.refresh} Append=${loadStates.append} Prepend=${loadStates.prepend}")
                 when (val refresh = loadStates.refresh) {
                     is LoadState.Loading -> showInitialLoading()
                     is LoadState.Error   -> showInitialError(refresh.error)
@@ -58,25 +64,22 @@ class FurnitureListActivity : AppCompatActivity() {
         pagingAdapter.addLoadStateListener { loadState ->
             when {
                 loadState.refresh is LoadState.Error -> {
-                    errorTextView.apply {
-                        text       = (loadState.refresh as LoadState.Error)
-                            .error.localizedMessage
-                        visibility = View.VISIBLE
-                    }
+                    val msg = (loadState.refresh as LoadState.Error).error.localizedMessage
+                    errorTextView.text       = msg
+                    errorTextView.visibility = View.VISIBLE
                 }
                 pagingAdapter.itemCount == 0 -> {
-                    errorTextView.apply {
-                        text       = "No items found"
-                        visibility = View.VISIBLE
-                    }
+                    errorTextView.text       = "No items found"
+                    errorTextView.visibility = View.VISIBLE
                 }
                 else -> errorTextView.visibility = View.GONE
             }
         }
 
-        // 4) Collect data pages
-        lifecycleScope.launchWhenStarted {
-            vm.products.collectLatest { pagingData ->
+        // 4) Collect data pages from ViewModel and submit to adapter
+        lifecycleScope.launch {
+            vm.products.collectLatest { pagingData: PagingData<ProductDto> ->
+                Log.d("PagingSource", "Submitting new PagingData")
                 pagingAdapter.submitData(pagingData)
             }
         }

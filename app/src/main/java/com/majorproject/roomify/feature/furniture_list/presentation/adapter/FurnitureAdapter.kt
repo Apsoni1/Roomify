@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.majorproject.roomify.R
 import com.majorproject.roomify.core.di.ApiService
-import com.majorproject.roomify.core.di.ProductDto
+import com.majorproject.roomify.feature.furniture_list.data.dto.ProductDto
 import retrofit2.HttpException
 
 class FurniturePagingAdapter :
