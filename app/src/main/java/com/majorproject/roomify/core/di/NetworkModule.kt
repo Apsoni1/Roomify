@@ -1,82 +1,70 @@
+// src/main/java/com/majorproject/roomify/core/di/NetworkModule.kt
 package com.majorproject.roomify.core.di
 
-import com.google.firebase.Firebase
-import com.google.firebase.remoteconfig.remoteConfig
+import com.google.android.datatransport.BuildConfig
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.majorproject.roomify.core.network.constants.baseUrlOpenAI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Request
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    @Singleton
+
+    private const val BASE_URL = "https://furniture-api.fly.dev/" // ← replace with your base URL
+
     @Provides
-    fun provideOkHttpClient() = OkHttpClient.Builder()
-        .addNetworkInterceptor(
-            Interceptor { chain ->
-                var request: Request? = null
-                val original = chain.request()
-                val prodServiceKey = Firebase.remoteConfig.getString("openai_key")
-                val requestBuilder = original.newBuilder()
-                    .addHeader("Authorization", "Bearer $prodServiceKey")
-                request = requestBuilder.build()
-                chain.proceed(request)
-            })
-        .addInterceptor(
-            Interceptor { chain ->
-                var attempt = 0
-                val maxRetries = 3
-                val retryDelayMillis = 500L
-                var response: okhttp3.Response
-                var exception: IOException? = null
-
-                do {
-                    try {
-                        response = chain.proceed(chain.request())
-                        if (response.isSuccessful) {
-                            return@Interceptor response
-                        }
-                        response.close()
-                    } catch (e: IOException) {
-                        exception = e
-                    }
-                    attempt++
-                    if (attempt < maxRetries) {
-                        try {
-                            Thread.sleep(retryDelayMillis * attempt) // Exponential backoff
-                        } catch (interruptedException: Exception) {
-                            Thread.currentThread().interrupt()
-                            throw IOException("Retry interrupted", interruptedException)
-                        }
-                    }
-                } while (attempt < maxRetries)
-
-                // Throw the last exception if max retries exceeded
-                throw exception ?: IOException("Unknown error during retry")
-            }
-        )
-        .build()
-
     @Singleton
-    @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val gson = GsonBuilder().setLenient().create()
+    fun provideGson(): Gson =
+        GsonBuilder()
+            .setLenient()
+            .create()
 
-        return Retrofit.Builder()
-            .baseUrl(baseUrlOpenAI)
+    @Provides
+    @Singleton
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().apply {
+            // Log body in debug builds, headers otherwise
+            level = if (BuildConfig.DEBUG)
+                HttpLoggingInterceptor.Level.BODY
+            else
+                HttpLoggingInterceptor.Level.HEADERS
+        }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient =
+        OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor as Interceptor)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .build()
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(
+        gson: Gson,
+        okHttpClient: OkHttpClient
+    ): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-    }
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
 }

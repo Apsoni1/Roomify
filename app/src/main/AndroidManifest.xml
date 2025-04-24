@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
         android:name=".core.di.BaseApplication"
         android:allowBackup="true"
@@ -35,7 +35,7 @@
             android:name=".feature.settings.presentaition.screens.ChooseLanguage"
             android:exported="false" />
         <activity
-            android:name=".feature.splash.presentaition.screens.StartSplash"
+            android:name=".feature.furniture_list.presentation.screen.FurnitureListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
