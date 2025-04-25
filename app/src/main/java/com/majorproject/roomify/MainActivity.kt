@@ -7,8 +7,9 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.majorproject.roomify.feature.cart.presentaition.screens.Cart
 import com.majorproject.roomify.feature.home.presentaition.screens.Home
 import com.majorproject.roomify.feature.account.presentaition.screens.Myaccount
-import com.majorproject.roomify.feature.category.presentaition.screens.Category
-
+import dagger.hilt.android.AndroidEntryPoint
+import com.majorproject.roomify.feature.category.presentaition.screens.CategoryScreen as Category
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var chipNavigationBar: ChipNavigationBar
     private lateinit var active: Fragment

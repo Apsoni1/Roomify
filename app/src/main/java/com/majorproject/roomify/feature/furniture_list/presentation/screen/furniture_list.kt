@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.majorproject.roomify.R
@@ -23,7 +24,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-@AndroidEntryPoint
 class FurnitureListActivity : AppCompatActivity() {
     private val vm: ProductViewModel by viewModels()
 
@@ -41,11 +41,12 @@ class FurnitureListActivity : AppCompatActivity() {
         errorTextView      = findViewById(R.id.errorTextView)
         fullScreenProgress = findViewById(R.id.fullScreenProgress)
         fullScreenError    = findViewById(R.id.fullScreenError)
+        val gridSpanCount = 2
 
         // 1) Adapter + footer
         val pagingAdapter  = FurniturePagingAdapter()
         val footerAdapter  = FurnitureLoadStateAdapter { pagingAdapter.retry() }
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = GridLayoutManager(this, gridSpanCount)
         recyclerView.adapter        = pagingAdapter.withLoadStateFooter(footerAdapter)
 
         // 2) Initial / loading / error UI via loadStateFlow

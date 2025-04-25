@@ -35,7 +35,7 @@
             android:name=".feature.settings.presentaition.screens.ChooseLanguage"
             android:exported="false" />
         <activity
-            android:name=".feature.furniture_list.presentation.screen.FurnitureListActivity"
+            android:name=".feature.splash.presentaition.screens.StartSplash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

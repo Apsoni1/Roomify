@@ -1,6 +1,8 @@
 package com.majorproject.roomify.core.di
 
+import com.majorproject.roomify.feature.furniture_list.data.repo_impl.CategoryRepositoryImpl
 import com.majorproject.roomify.feature.furniture_list.data.repo_impl.ProductRepositoryImpl
+import com.majorproject.roomify.feature.furniture_list.domain.repo.CategoryRepository
 import com.majorproject.roomify.feature.furniture_list.domain.repo.ProductRepository
 import dagger.Binds
 import dagger.Module
@@ -17,4 +19,11 @@ abstract class RepositoryModule {
     abstract fun bindProductRepository(
         productRepositoryImpl: ProductRepositoryImpl
     ): ProductRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindCategoryRepository(
+        impl: CategoryRepositoryImpl
+    ): CategoryRepository
+
 }
