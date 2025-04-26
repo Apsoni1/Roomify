@@ -17,4 +17,6 @@
     <color name="background_text">#3C3A37</color>
     <color name="Beige_fill">#F5F5DC</color>
     <color name="LightBlue">#99B3BB</color>
+    <color name="orange">#FF5A2D</color>
+    <color name="peach">#FFF2EC</color>
 </resources>
