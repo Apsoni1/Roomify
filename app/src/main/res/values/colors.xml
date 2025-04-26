@@ -20,4 +20,6 @@
     <color name="LightBlue">#99B3BB</color>
     <color name="orange">#FF5A2D</color>
     <color name="peach">#FFF2EC</color>
+    <color name="lightGreen">#4CAF50</color>
+    <color name="fadegrey">#9E9E9E</color>
 </resources>

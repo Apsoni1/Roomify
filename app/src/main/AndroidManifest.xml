@@ -43,6 +43,10 @@
         <activity
             android:name=".feature.settings.presentaition.screens.ChooseLanguage"
             android:exported="false" />
+        <activity android:name=".feature.auth.presentation.screen.LoginActivity"
+            android:exported="false"/>
+        <activity android:name=".feature.auth.presentation.screen.RegisterActivity"
+            android:exported="false"/>
         <activity
             android:name=".feature.splash.presentaition.screens.StartSplash"
             android:exported="true">

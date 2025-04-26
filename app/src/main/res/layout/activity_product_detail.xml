@@ -1,10 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.product_detail.presentation.screens.ProductDetailActivity">
+    android:fillViewport="true"
+    android:padding="16dp"
+    android:paddingTop="60dp"
+    android:paddingBottom="60dp"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Product Image -->
+        <!-- Product Image with Wishlist Button -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp">
+
+            <!-- Product Image -->
+            <ImageView
+                android:id="@+id/productImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sofa" />
+
+            <!-- Wishlist Button (Heart Icon) -->
+            <ImageButton
+                android:id="@+id/wishlistEmpty"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="12dp"
+                android:src="@drawable/favorite_empty"
+                android:background="@color/transparent"
+                android:contentDescription="Add to Wishlist" />
+            <ImageButton
+                android:id="@+id/wishlistselected"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="12dp"
+                android:src="@drawable/baseline_favorite_24"
+                android:background="@color/transparent"
+                android:contentDescription="Add to Wishlist" />
+
+        </FrameLayout>
+
+
+        <!-- Product Name -->
+        <!-- Furniture Name -->
+        <TextView
+            android:id="@+id/productNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Furniture Name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="start" />
+
+        <!-- View in 3D Button below Furniture Name -->
+        <Button
+            android:id="@+id/viewIn3DButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View in 3D"
+            android:textSize="10sp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/Blue"
+            android:textColor="@color/white"
+            android:layout_gravity="start" />
+
+
+        <!-- Price and Discount Price -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <!-- Discount Price -->
+            <TextView
+                android:id="@+id/discountPriceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹12,000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/lightGreen" />
+            <!-- Original Price (Striked through) -->
+            <TextView
+                android:id="@+id/originalPriceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹15,000"
+                android:textSize="16sp"
+                android:textColor="@color/fadegrey"
+                android:layout_marginStart="12dp"
+               />
+
+        </LinearLayout>
+
+        <!-- Short Description -->
+        <TextView
+            android:id="@+id/shortDescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A beautifully crafted wooden table perfect for your living room."
+            android:textSize="16sp"
+            android:textColor="@color/DarkGray"
+            android:layout_marginTop="12dp" />
+
+        <!-- Specifications Title -->
+        <TextView
+            android:id="@+id/specificationsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Specifications"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="24dp" />
+
+        <!-- Wood Type -->
+        <TextView
+            android:id="@+id/woodTypeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wood Type: Oak"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp" />
+
+        <!-- Finish -->
+        <TextView
+            android:id="@+id/finishTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finish: Natural Matte"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp" />
+
+        <!-- Dimensions -->
+        <TextView
+            android:id="@+id/dimensionsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dimensions: 60cm (L) x 45cm (W) x 90cm (H)"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp" />
+
+        <!-- Weight -->
+        <TextView
+            android:id="@+id/weightTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight: 12 kg"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp" />
+
+        <!-- Stock Status -->
+        <TextView
+            android:id="@+id/stockStatusTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Availability: In Stock"
+            android:textSize="16sp"
+            android:textColor="@color/lightGreen"
+            android:layout_marginTop="4dp" />
+
+        <!-- Tags (Optional) -->
+        <TextView
+            android:id="@+id/tagsTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tags:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp" />
+
+        <!-- Tags Container -->
+        <LinearLayout
+            android:id="@+id/tagsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="start"
+            />
+
+        <!-- Full Description Title -->
+        <TextView
+            android:id="@+id/fullDescriptionTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="24dp" />
+
+        <!-- Full Description -->
+        <TextView
+            android:id="@+id/fullDescriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This exquisite oak wood table is handcrafted to perfection, featuring a beautiful natural matte finish that complements any interior decor. It’s lightweight yet sturdy, making it an ideal piece for daily use."
+            android:textSize="16sp"
+            android:textColor="@color/fadegrey"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Add to Cart Button -->
+        <Button
+            android:id="@+id/addToCartButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add to Cart"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/orange"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</ScrollView>
