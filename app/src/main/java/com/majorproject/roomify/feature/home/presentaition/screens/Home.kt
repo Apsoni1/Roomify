@@ -24,7 +24,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.majorproject.roomify.feature.common.adapters.ViewPagerAdapterHome
 import com.majorproject.roomify.R
-import com.majorproject.roomify.feature.category.presentaition.screens.Category
+import com.majorproject.roomify.feature.category.presentaition.screens.CategoryScreen as Category
 
 class Home : Fragment() {
 

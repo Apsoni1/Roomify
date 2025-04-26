@@ -7,36 +7,31 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.majorproject.roomify.R
+import com.majorproject.roomify.feature.category.domain.model.Category
 
 class CategoryViewPagerAdapter(
     private val context: Context,
-    private val images: List<Int> // List of drawable resource IDs
-) : RecyclerView.Adapter<CategoryViewPagerAdapter.ViewHolder>() {
+    private val categories: List<Category>
+) : RecyclerView.Adapter<CategoryViewPagerAdapter.CategoryViewHolder>() {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val categoryImage: ImageView = itemView.findViewById(R.id.category_image)
+    inner class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val categoryImage: ImageView = view.findViewById(R.id.category_image)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.viewpager_category, parent, false)
-        return ViewHolder(view)
+        return CategoryViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        try {
-            // Use Glide to load the drawable resource ID
-            Glide.with(context)
-                .load(images[position])
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .fitCenter()
-                .into(holder.categoryImage)
-        } catch (ignore: Exception) {
-        }
-    }
+    override fun getItemCount(): Int = categories.size
 
-    override fun getItemCount(): Int {
-        return images.size
+    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
+        val category = categories[position]
+        Glide.with(context)
+            .load(category.imagePath)
+            .placeholder(R.drawable.info_outline_)
+            .into(holder.categoryImage)
     }
 }
+

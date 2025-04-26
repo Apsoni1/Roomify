@@ -1,14 +1,22 @@
 package com.majorproject.roomify.feature.furniture_list.presentation.adapter
 
+
+import android.graphics.Paint
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.majorproject.roomify.R
 import com.majorproject.roomify.feature.furniture_list.data.dto.ProductDto
 
@@ -24,15 +32,55 @@ class FurniturePagingAdapter :
 
     inner class FurnitureViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val name: TextView = view.findViewById(R.id.tvName)
+        private val description: TextView = view.findViewById(R.id.tvDescription)
         private val price: TextView = view.findViewById(R.id.tvPrice)
+        private val discountprice: TextView = view.findViewById(R.id.tvDiscountPrice)
         private val image: ImageView = view.findViewById(R.id.ivFurniture)
+        private val imageProgress: ProgressBar = view.findViewById(R.id.imageProgress)
 
         fun bind(item: ProductDto?) {
-            item?.let {
-                name.text = it.name
-                price.text = "$${it.discountPrice}"
-                Glide.with(image).load(it.imagePath).into(image)
-            }
+            if (item == null) return
+
+            name.text = item.name
+            description.text= item.description
+            val originalPrice = "$${item.price}"
+            val spannable = android.text.SpannableString(originalPrice)
+            spannable.setSpan(object : android.text.style.StrikethroughSpan() {
+                override fun updateDrawState(ds: android.text.TextPaint) {
+                    super.updateDrawState(ds)
+                    ds.strokeWidth = 3f  // Increases the strike-through thickness
+                }
+            }, 0, originalPrice.length, android.text.Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            price.text = spannable
+
+            discountprice.text = "$${item.discountPrice}"
+            imageProgress.visibility = View.VISIBLE
+            Glide.with(image.context)
+                .load(item.imagePath)
+                .listener(object : RequestListener<Drawable> {
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        imageProgress.visibility = View.GONE
+                        return false
+                    }
+
+
+                    override fun onResourceReady(
+                        resource: Drawable,
+                        model: Any,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        imageProgress.visibility = View.GONE
+                        return false                    }
+                })
+
+                .into(image)
         }
     }
 

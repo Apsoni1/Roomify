@@ -2,44 +2,116 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
+    android:layout_margin="5dp"
     card_view:cardCornerRadius="8dp"
     card_view:cardElevation="4dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:padding="8dp">
 
+        <!-- Main Furniture Image -->
         <ImageView
             android:id="@+id/ivFurniture"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"/>
-
-        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingStart="8dp">
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="1:1" />
+        <ProgressBar
+            android:id="@+id/imageProgress"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/ivFurniture"
+            app:layout_constraintBottom_toBottomOf="@id/ivFurniture"
+            app:layout_constraintStart_toStartOf="@id/ivFurniture"
+            app:layout_constraintEnd_toEndOf="@id/ivFurniture" />
+        <!-- Favourites Icon (Heart) inside circular border -->
+        <ImageView
+            android:id="@+id/ivUnFavorite"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="6dp"
+            android:padding="4dp"
+            android:src="@drawable/favorite_empty"
+        android:background="@drawable/bg_circle_border"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/ivFurniture"
+        app:layout_constraintEnd_toEndOf="@id/ivFurniture"
+        card_view:tint="@android:color/darker_gray" />
+        <ImageView
+            android:id="@+id/ivFavorite"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="6dp"
+            android:padding="4dp"
+            android:visibility="gone"
+            android:src="@drawable/baseline_favorite_24"
+            android:background="@drawable/bg_circle_border"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="@+id/ivFurniture"
+            app:layout_constraintEnd_toEndOf="@id/ivFurniture"
+            card_view:tint="@android:color/holo_red_dark" />
 
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Furniture Name"
-                android:textAppearance="?attr/textAppearanceSubtitle1"/>
 
-            <TextView
-                android:id="@+id/tvPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$0.00"
-                android:textAppearance="?attr/textAppearanceBody2"/>
-        </LinearLayout>
-    </LinearLayout>
+        <!-- Furniture Name -->
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Furniture Name"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:fontFamily="sans-serif-black"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintTop_toBottomOf="@id/ivFurniture"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Furniture desc"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Price -->
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Price -->
+        <TextView
+            android:id="@+id/tvDiscountPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:fontFamily="@font/aclonica"
+            android:textSize="20dp"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintTop_toBottomOf="@id/tvPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
