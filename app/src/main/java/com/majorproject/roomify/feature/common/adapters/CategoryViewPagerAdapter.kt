@@ -8,11 +8,12 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.majorproject.roomify.R
-import com.majorproject.roomify.feature.category.domain.model.Category
+import com.majorproject.roomify.feature.furniture_list.data.dto.ProductDto
 
 class CategoryViewPagerAdapter(
     private val context: Context,
-    private val categories: List<Category>
+    private val products: List<ProductDto>,
+    private val onItemClick: (ProductDto) -> Unit = {}
 ) : RecyclerView.Adapter<CategoryViewPagerAdapter.CategoryViewHolder>() {
 
     inner class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -24,14 +25,18 @@ class CategoryViewPagerAdapter(
         return CategoryViewHolder(view)
     }
 
-    override fun getItemCount(): Int = categories.size
+    override fun getItemCount(): Int = products.size
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        val category = categories[position]
+        val product = products[position]
         Glide.with(context)
-            .load(category.imagePath)
+            .load(product.imagePath)
             .placeholder(R.drawable.info_outline_)
             .into(holder.categoryImage)
+
+        // Add click listener to navigate to product description activity
+        holder.itemView.setOnClickListener {
+            onItemClick(product)
+        }
     }
 }
-

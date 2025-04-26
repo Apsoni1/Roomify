@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/peach"
     android:padding="24dp">
 
     <ScrollView
@@ -72,7 +71,7 @@
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/orange"
                 android:textColor="@android:color/white"
-                android:background="@drawable/rounded_butto"/>
+                android:background="@drawable/rounded_button"/>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -1,8 +1,10 @@
 package com.majorproject.roomify.feature.furniture_list.data.dto
 
 import com.google.gson.annotations.SerializedName
-
-
+import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+@Parcelize
 data class ProductDto(
     val id: String,
     val name: String,
@@ -27,4 +29,4 @@ data class ProductDto(
     @SerializedName("discount_price")
     val discountPrice: Double,
     val tags: List<String>?
-)
+) : Parcelable

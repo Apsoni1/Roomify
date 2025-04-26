@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt") // Ensure kapt plugin is included
     id("dagger.hilt.android.plugin") // Hilt plugin applied
+    id ("kotlin-parcelize")
+
 }
 
 android {
@@ -38,7 +40,9 @@ android {
         jvmTarget = "17" // Update from "1.8" to "17"
     }
 
-
+    buildFeatures {
+        dataBinding =true
+    }
 
 
     // Enable vector drawables
@@ -57,6 +61,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
     implementation ("com.google.dagger:hilt-android:2.49")
     implementation("androidx.paging:paging-common-android:3.3.6")
+    implementation("androidx.activity:activity:1.10.1")
     kapt       ("com.google.dagger:hilt-android-compiler:2.49"   ) // Test and UI testing libraries
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
@@ -96,8 +101,10 @@ dependencies {
 
     //datastore
     implementation("androidx.datastore:datastore-preferences:1.1.2")
+    implementation ("com.github.Foysalofficial:NafisBottomNav:5.0")
 
-    //firebase
+
+//firebase
     implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
