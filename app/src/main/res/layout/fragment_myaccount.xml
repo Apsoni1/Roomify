@@ -1,260 +1,194 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/Platinum"
-    tools:context=".feature.account.presentaition.screens.Myaccount">
-    <ScrollView
+    android:background="@android:color/white">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Profile Info -->
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:src="@drawable/usericon"
-                android:layout_marginTop="25sp"
-                android:layout_marginStart="35sp"
-                android:layout_width="54sp"
-                android:layout_height="54sp"></com.makeramen.roundedimageview.RoundedImageView>
-            <GridLayout
-                android:layout_marginVertical="8sp"
-                android:paddingVertical="12sp"
-                android:background="@drawable/grid_bg"
-                android:columnCount="2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/yourOrdersBtn"
-                    android:text="@string/string7"
-                    android:paddingVertical="15sp"
-                    android:paddingHorizontal="38sp"
-                    android:textSize="17sp"
-                    android:layout_marginTop="10sp"
-                    android:layout_marginStart="25sp"
-                    android:layout_gravity="start"
-                    android:fontFamily="sans-serif-medium"
-                    android:background="@drawable/button_bg"
-                    android:layout_width="170sp"
-                    android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="30dp">
 
-                </TextView>
-                <TextView
-                    android:id="@+id/buyAgainBtn"
-                    android:text="@string/string8"
-                    android:paddingVertical="15sp"
-                    android:paddingHorizontal="42sp"
-                    android:textSize="17sp"
-                    android:layout_marginTop="10sp"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="25sp"
-                    android:fontFamily="sans-serif-medium"
-                    android:background="@drawable/button_bg"
-                    android:layout_width="170sp"
-                    android:layout_height="wrap_content">
-
-                </TextView>
-                <TextView
-                    android:id="@+id/yourAccountBtn"
-                    android:text="@string/string9"
-                    android:paddingVertical="15sp"
-                    android:paddingHorizontal="33sp"
-                    android:textSize="17sp"
-                    android:layout_marginTop="10sp"
-                    android:layout_marginStart="25sp"
-                    android:fontFamily="sans-serif-medium"
-                    android:background="@drawable/button_bg"
-                    android:layout_width="170sp"
-                    android:layout_height="wrap_content">
-                </TextView>
-                <TextView
-                    android:id="@+id/yourListBtn"
-                    android:layout_marginTop="10sp"
-                    android:layout_marginEnd="25sp"
-                    android:text="@string/string10"
-                    android:paddingVertical="15sp"
-                    android:paddingHorizontal="42sp"
-                    android:textSize="17sp"
-                    android:layout_gravity="end"
-                    android:fontFamily="sans-serif-medium"
-                    android:background="@drawable/button_bg"
-                    android:layout_width="170sp"
-                    android:layout_height="wrap_content">
-                </TextView>
-
-            </GridLayout>
 
             <LinearLayout
-                android:paddingVertical="25sp"
-                android:background="@color/white"
-                android:layout_marginVertical="8sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:paddingStart="16dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hello!  "
+                        android:textSize="25sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Username"
+                        android:textSize="25sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
 
                 <TextView
-                    android:textSize="18sp"
-                    android:fontFamily="sans-serif-black"
-                    android:paddingHorizontal="15sp"
-                    android:text="@string/string4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <Button
-                    android:id="@+id/dateprefBtn"
-                    android:textColor="@color/black"
-                    android:textAlignment="textStart"
-                    android:text="@string/string5"
-                    android:drawablePadding="8sp"
-                    android:textSize="12sp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:paddingHorizontal="15sp"
-                    android:drawableLeft="@drawable/perm_device_information"
-                    android:drawableRight="@drawable/arrow_right"
-                    android:layout_marginTop="19sp"
-                    android:background="@android:color/transparent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:id="@+id/userEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="user@example.com"
+                    android:textColor="@color/fadegrey"
+                    android:textSize="14sp" />
 
-                </Button>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="13sp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/LightGray"></View>
-                <Button
-                    android:id="@+id/themeBtn"
-                    android:textColor="@color/black"
-                    android:textAlignment="textStart"
-                    android:text="@string/string6"
-                    android:textSize="12sp"
-                    android:drawablePadding="8sp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:paddingHorizontal="15sp"
-                    android:drawableLeft="@drawable/app_theme"
-                    android:drawableRight="@drawable/arrow_right"
-                    android:layout_marginTop="15sp"
-                    android:background="@android:color/transparent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </Button>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginHorizontal="13sp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/LightGray"></View>
-
-                <Button
-                    android:id="@+id/languageBtn"
-                    android:textColor="@color/black"
-                    android:textAlignment="textStart"
-                    android:text="@string/string11"
-                    android:textSize="12sp"
-                    android:drawablePadding="8sp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:paddingHorizontal="15sp"
-                    android:drawableLeft="@drawable/language"
-                    android:drawableRight="@drawable/arrow_right"
-                    android:layout_marginTop="15sp"
-                    android:background="@android:color/transparent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </Button>
             </LinearLayout>
+        </LinearLayout>
 
-
-        <LinearLayout
-            android:paddingVertical="25sp"
-            android:background="@color/white"
-            android:layout_marginVertical="8sp"
-            android:orientation="vertical"
+        <!-- Divider -->
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="1dp"
+            android:background="@color/DarkGray"
+            android:layout_marginVertical="16dp"/>
 
-            <TextView
-                android:textSize="18sp"
-                android:fontFamily="sans-serif-black"
-                android:paddingHorizontal="15sp"
-                android:text="@string/string0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/policiesBtn"
-                android:textColor="@color/black"
-                android:textAlignment="textStart"
-                android:text="@string/string1"
-                android:drawablePadding="8sp"
-                android:textSize="12sp"
-                android:fontFamily="sans-serif-condensed"
-                android:paddingHorizontal="15sp"
-                android:drawableLeft="@drawable/policy_ic"
-                android:drawableRight="@drawable/arrow_right"
-                android:layout_marginTop="19sp"
-                android:background="@android:color/transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <!-- Menu Items -->
 
-            </Button>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginHorizontal="13sp"
-                android:layout_marginTop="15dp"
-                android:background="@color/LightGray"></View>
-            <Button
-                android:id="@+id/supportBtn"
-                android:textColor="@color/black"
-                android:textAlignment="textStart"
-                android:text="@string/string2"
-                android:textSize="12sp"
-                android:drawablePadding="8sp"
-                android:fontFamily="sans-serif-condensed"
-                android:paddingHorizontal="15sp"
-                android:drawableLeft="@drawable/support_agent"
-                android:drawableRight="@drawable/arrow_right"
-                android:layout_marginTop="15sp"
-                android:background="@android:color/transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Orders"
+            android:padding= "12dp"
+            android:textSize="18sp"
+            android:textColor="@color/fadegrey"
+            android:textStyle="bold" />
 
-            </Button>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginHorizontal="13sp"
-                android:layout_marginTop="15dp"
-                android:background="@color/LightGray"></View>
+        <TextView
+            android:id="@+id/ViewCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="View Cart"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical" />
 
-            <Button
-                android:id="@+id/aboutBtn"
-                android:textColor="@color/black"
-                android:textAlignment="textStart"
-                android:text="@string/string3"
-                android:textSize="12sp"
-                android:drawablePadding="8sp"
-                android:fontFamily="sans-serif-condensed"
-                android:paddingHorizontal="15sp"
-                android:drawableLeft="@drawable/info_outline_"
-                android:drawableRight="@drawable/arrow_right"
-                android:layout_marginTop="15sp"
-                android:background="@android:color/transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/Wishlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:text="Wishlist"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical" />
 
-            </Button>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/orders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:text="Orders"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical" />
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginVertical="16dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:padding= "12dp"
+            android:textColor="@color/fadegrey"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/support"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:text="Support"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical" />
 
-    </ScrollView>
+        <TextView
+            android:id="@+id/customerCare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:text="Customer Care"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical" />
 
-    <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/changeLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:text="Change Language"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical" />
 
+        <TextView
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:text="About"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="16dp"
+            android:padding="12dp"
+            android:text="Log Out"
+            android:textSize="16sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical" />
+
+    </LinearLayout>
+
+</ScrollView>
