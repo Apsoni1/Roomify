@@ -54,7 +54,22 @@ class CategoryScreen : Fragment() {
         dotsIndicator = view.findViewById(R.id.dots_indicator)
         categoryTitle = view.findViewById(R.id.categoryTitle)
         rvCategory = view.findViewById(R.id.rvCategory)
+        progressBar = view.findViewById(R.id.progressBar)
 
+        // Make sure progress bar is visible initially
+        progressBar.visibility = View.VISIBLE
+
+        setupCategoryListAdapter()
+        setupViewPager()
+        setupObservers()
+
+        // Fetch data after setup
+        fetchData()
+
+        return view
+    }
+
+    private fun setupCategoryListAdapter() {
         categoryListAdapter = CategoryListAdapter(emptyList()) { category ->
             val bundle = Bundle().apply {
                 putParcelable("category", category)
@@ -71,41 +86,21 @@ class CategoryScreen : Fragment() {
 
         rvCategory.layoutManager = GridLayoutManager(requireContext(), 2)
         rvCategory.adapter = categoryListAdapter
-        progressBar = view.findViewById(R.id.progressBar)
-        progressBar.visibility = View.VISIBLE
+    }
 
-        setupViewPager()
-
-        viewModel.fetchViewPagerCategories()
-        viewModel.fetchGridCategories(limit = 100)
-        viewModel.fetchSecondItemsOfEachCategory(limit = 100)
-
-        // Initialize adapter with empty list and click handler
-        adapter = CategoryViewPagerAdapter(
-            requireContext(),
-            emptyList()
-        ) { product ->
-            navigateToProductDetail(product)
+    private fun setupObservers() {
+        // Observe loading state
+        lifecycleScope.launch {
+            viewModel.isLoading.collectLatest { isLoading ->
+                progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+            }
         }
-        viewPagerCategories.adapter = adapter
 
         // Collect second items for the ViewPager
         lifecycleScope.launch {
             viewModel.secondItems.collectLatest { products ->
                 if (products.isNotEmpty()) {
-                    adapter = CategoryViewPagerAdapter(
-                        requireContext(),
-                        products
-                    ) { product ->
-                        navigateToProductDetail(product)
-                    }
-
-                    // Extract category names from products for title display
-                    categoryTitles = products.map { it.category ?: "Unknown" }
-                    viewPagerCategories.adapter = adapter
-                    dotsIndicator.setViewPager2(viewPagerCategories)
-                    updatePageTitle(viewPagerCategories.currentItem)
-                    progressBar.visibility = View.GONE
+                    updateViewPagerWithProducts(products)
                 }
             }
         }
@@ -115,12 +110,30 @@ class CategoryScreen : Fragment() {
             viewModel.gridCategories.collectLatest { categories ->
                 if (categories.isNotEmpty()) {
                     categoryListAdapter.updateList(categories)
-                    progressBar.visibility = View.GONE
                 }
             }
         }
+    }
 
-        return view
+    private fun updateViewPagerWithProducts(products: List<ProductDto>) {
+        adapter = CategoryViewPagerAdapter(
+            requireContext(),
+            products
+        ) { product ->
+            navigateToProductDetail(product)
+        }
+
+        // Extract category names from products for title display
+        categoryTitles = products.map { it.category ?: "Unknown" }
+        viewPagerCategories.adapter = adapter
+        dotsIndicator.setViewPager2(viewPagerCategories)
+        updatePageTitle(viewPagerCategories.currentItem)
+    }
+
+    private fun fetchData() {
+        viewModel.fetchViewPagerCategories()
+        viewModel.fetchGridCategories(limit = 100)
+        viewModel.fetchSecondItemsOfEachCategory(limit = 100)
     }
 
     private fun navigateToProductDetail(product: ProductDto) {
@@ -131,6 +144,15 @@ class CategoryScreen : Fragment() {
     }
 
     private fun setupViewPager() {
+        // Initialize adapter with empty list and click handler
+        adapter = CategoryViewPagerAdapter(
+            requireContext(),
+            emptyList()
+        ) { product ->
+            navigateToProductDetail(product)
+        }
+        viewPagerCategories.adapter = adapter
+
         viewPagerCategories.clipChildren = false
         viewPagerCategories.offscreenPageLimit = 3
         viewPagerCategories.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
@@ -161,4 +183,9 @@ class CategoryScreen : Fragment() {
 
     private val sliderRunnable =
         Runnable { viewPagerCategories.currentItem += 1 }
+
+    override fun onPause() {
+        super.onPause()
+        slideHandler.removeCallbacks(sliderRunnable)
+    }
 }

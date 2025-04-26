@@ -1,6 +1,7 @@
 package com.majorproject.roomify
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.majorproject.roomify.feature.account.presentaition.screens.Myaccount
@@ -15,6 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigation: NafisBottomNavigation
+    private var backPressedTime: Long = 0
+    private lateinit var backToast: Toast
 
     private val home = Home()
     private val category = Category()
@@ -96,6 +99,16 @@ class MainActivity : AppCompatActivity() {
             bottomNavigation.show(ID_HOME)
         } else {
             super.onBackPressed()
+        }
+
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            backToast.cancel()
+            super.onBackPressed() // Only call super after second press
+            finishAffinity()      // Finish the whole app
+        } else {
+            backToast = Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT)
+            backToast.show()
+            backPressedTime = System.currentTimeMillis()
         }
     }
 }

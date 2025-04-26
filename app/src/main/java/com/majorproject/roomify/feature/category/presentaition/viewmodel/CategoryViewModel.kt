@@ -24,20 +24,40 @@ class CategoryViewModel @Inject constructor(
     private val _gridCategories = MutableStateFlow<List<Category>>(emptyList())
     val gridCategories: StateFlow<List<Category>> = _gridCategories
 
-    // Updated to use ProductDto instead of CategoryDto
     private val _secondItems = MutableStateFlow<List<ProductDto>>(emptyList())
     val secondItems: StateFlow<List<ProductDto>> = _secondItems
 
+    // Loading state to track overall loading status
+    private val _isLoading = MutableStateFlow(true)
+    val isLoading: StateFlow<Boolean> = _isLoading
+
+    init {
+        // Initialize with loading state true
+        _isLoading.value = true
+    }
+
     fun fetchViewPagerCategories() {
         viewModelScope.launch {
-            val categories = getCategoriesUseCase(80)
-            _viewPagerCategories.value = categories.reversed()
+            try {
+                val categories = getCategoriesUseCase(80)
+                _viewPagerCategories.value = categories.reversed()
+                checkLoadingState()
+            } catch (e: Exception) {
+                // Handle error
+                checkLoadingState()
+            }
         }
     }
 
     fun fetchGridCategories(limit: Int) {
         viewModelScope.launch {
-            _gridCategories.value = getCategoriesUseCase(limit)
+            try {
+                _gridCategories.value = getCategoriesUseCase(limit)
+                checkLoadingState()
+            } catch (e: Exception) {
+                // Handle error
+                checkLoadingState()
+            }
         }
     }
 
@@ -46,9 +66,19 @@ class CategoryViewModel @Inject constructor(
             try {
                 val result = fetchSecondItemsOfEachCategoryUseCase(limit)
                 _secondItems.value = result
+                checkLoadingState()
             } catch (e: Exception) {
                 // Handle error
+                checkLoadingState()
             }
         }
+    }
+
+    // Check if all data is loaded
+    private fun checkLoadingState() {
+        val isStillLoading = _viewPagerCategories.value.isEmpty() ||
+                _gridCategories.value.isEmpty() ||
+                _secondItems.value.isEmpty()
+        _isLoading.value = isStillLoading
     }
 }

@@ -1,4 +1,4 @@
-package com.majorproject.roomify.feature.auth.domain
+package com.majorproject.roomify.feature.auth.domain.repo
 
 
 import com.google.firebase.auth.AuthCredential

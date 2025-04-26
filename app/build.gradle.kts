@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt") // Ensure kapt plugin is included
     id("dagger.hilt.android.plugin") // Hilt plugin applied
     id ("kotlin-parcelize")
+    id("com.google.gms.google-services")
 
 }
 
@@ -62,6 +63,9 @@ dependencies {
     implementation ("com.google.dagger:hilt-android:2.49")
     implementation("androidx.paging:paging-common-android:3.3.6")
     implementation("androidx.activity:activity:1.10.1")
+    implementation("androidx.credentials:credentials:1.5.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
     kapt       ("com.google.dagger:hilt-android-compiler:2.49"   ) // Test and UI testing libraries
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

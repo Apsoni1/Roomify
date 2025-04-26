@@ -17,7 +17,7 @@ class CategoryRemoteDataSource @Inject constructor(
 
         return products.distinctBy { it.category }.map {
             CategoryDto(
-                name = it.category,
+                _name = it.category,
                 imageUrl = it.imagePath
             )
         }

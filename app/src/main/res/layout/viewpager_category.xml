@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <FrameLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,7 +14,13 @@
             android:scaleType="centerCrop"
             app:riv_corner_radius="15sp"
             android:clipToOutline="true"
-            android:outlineProvider="background"
-          />
+            android:outlineProvider="background" />
 
+        <!-- ProgressBar over the image -->
+        <ProgressBar
+            android:id="@+id/category_progress_bar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="visible" />
 </FrameLayout>

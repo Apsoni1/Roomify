@@ -17,6 +17,12 @@
             android:name=".feature.product_detail.presentation.screens.ProductDetailActivity"
             android:exported="false" />
         <activity
+            android:name=".feature.auth.presentation.view.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.auth.presentation.screen.RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".feature.account.presentaition.screens.YourAccount"
             android:exported="false" />
         <activity
