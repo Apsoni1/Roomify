@@ -1,5 +1,7 @@
 package com.majorproject.roomify.core.di
 
+import com.majorproject.roomify.feature.ai_bot.data.repo_impl.AiBotRepositoryImpl
+import com.majorproject.roomify.feature.ai_bot.domain.repo.AiBotRepository
 import com.majorproject.roomify.feature.auth.data.repo_impl.AuthRepositoryImpl
 import com.majorproject.roomify.feature.auth.domain.repo.AuthRepository
 import com.majorproject.roomify.feature.category_detail.data.repoimpl.CategoryProductRepositoryImpl
@@ -41,4 +43,10 @@ abstract class RepositoryModule {
     abstract fun bindCategoryProductRepository(
         repositoryImpl: CategoryProductRepositoryImpl
     ): CategoryProductRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindAiBotRepository(
+        repositoryImpl: AiBotRepositoryImpl
+    ): AiBotRepository
 }

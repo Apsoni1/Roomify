@@ -4,17 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.AIBot.AiBot">
+    tools:context=".feature.ai_bot.presentation.screens.AiBot">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="roomyai.json"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lottie_loop="true"
+        app:lottie_renderMode="hardware" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:gravity="center_vertical|start"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Logo Image -->
+            <ImageView
+                android:id="@+id/logoImage"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_gravity="start"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/airobot"
+                android:contentDescription="Roomy AI Logo" />
+
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/abril_fatface"
+                android:gravity="center"
+                android:text="Roomy AI"
+                android:textColor="@color/primary_bg"
+                android:textSize="24dp" />
+
+        </LinearLayout>
+
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -22,42 +62,49 @@
         android:id="@+id/chatRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/messageInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/messageInputLayout" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/messageInputLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
             android:id="@+id/messageEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Type a message..."
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/button_bg2"
+            android:hint="Ask roomy..."
+            android:inputType="text"
+            android:padding="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/sendButton" />
+            app:layout_constraintEnd_toStartOf="@id/sendButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_send"
-            android:background="@color/transparent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Send message"
+            android:maxWidth="38dp"
+            android:maxHeight="38dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/img_9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="Send message"
-            app:tint="@color/Blue" />
-
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.majorproject.roomify.feature.AIBot
+package com.majorproject.roomify.feature.ai_bot.domain.models
 
 
 data class Message(

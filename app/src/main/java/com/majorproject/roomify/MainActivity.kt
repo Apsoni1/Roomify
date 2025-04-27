@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.majorproject.roomify.feature.ai_bot.presentation.screens.AiBot
 import com.majorproject.roomify.feature.account.presentaition.screens.Myaccount
 import com.majorproject.roomify.feature.category.presentaition.screens.CategoryScreen as Category
 import com.majorproject.roomify.feature.home.presentaition.screens.Home
-import com.majorproject.roomify.feature.AIBot.AiBot
 import com.majorproject.roomify.feature.category_detail.presentation.screen.CategoryDetailList// ← add this!
 import com.nafis.bottomnavigation.NafisBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
