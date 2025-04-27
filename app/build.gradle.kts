@@ -66,6 +66,7 @@ dependencies {
     implementation("androidx.credentials:credentials:1.5.0")
     implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
     implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
+    implementation("com.google.firebase:firebase-storage-ktx:21.0.1")
     kapt       ("com.google.dagger:hilt-android-compiler:2.49"   ) // Test and UI testing libraries
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
@@ -106,8 +107,10 @@ dependencies {
     //datastore
     implementation("androidx.datastore:datastore-preferences:1.1.2")
     implementation ("com.github.Foysalofficial:NafisBottomNav:5.0")
+    implementation("io.github.sceneview:arsceneview:2.3.0")
 
-
+    implementation("com.google.ar:core:1.45.0")
+    implementation ("com.jraska:falcon:2.2.0")
 //firebase
     implementation(platform("com.google.firebase:firebase-bom:33.8.0"))
     implementation("com.google.firebase:firebase-auth")

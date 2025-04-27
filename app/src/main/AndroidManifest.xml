@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".core.di.BaseApplication"
         android:allowBackup="true"
@@ -13,6 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Roomify"
         tools:targetApi="31">
+        <activity
+            android:name=".feature.ARViewer.presetation.ArViewerActivity"
+            android:exported="false" />
         <activity
             android:name=".feature.product_detail.presentation.screens.ProductDetailActivity"
             android:exported="false" />
@@ -43,10 +59,6 @@
         <activity
             android:name=".feature.settings.presentaition.screens.ChooseLanguage"
             android:exported="false" />
-        <activity android:name=".feature.auth.presentation.screen.LoginActivity"
-            android:exported="false"/>
-        <activity android:name=".feature.auth.presentation.screen.RegisterActivity"
-            android:exported="false"/>
         <activity
             android:name=".feature.splash.presentaition.screens.StartSplash"
             android:exported="true">
