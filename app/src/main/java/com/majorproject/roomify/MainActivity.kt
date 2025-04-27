@@ -5,32 +5,30 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.majorproject.roomify.feature.account.presentaition.screens.Myaccount
-import com.majorproject.roomify.feature.cart.presentaition.screens.Cart
-import com.majorproject.roomify.feature.category_detail.presentation.screen.CategoryDetailList
 import com.majorproject.roomify.feature.category.presentaition.screens.CategoryScreen as Category
 import com.majorproject.roomify.feature.home.presentaition.screens.Home
+import com.majorproject.roomify.feature.AIBot.AiBot
+import com.majorproject.roomify.feature.category_detail.presentation.screen.CategoryDetailList// ← add this!
 import com.nafis.bottomnavigation.NafisBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     private lateinit var bottomNavigation: NafisBottomNavigation
     private var backPressedTime: Long = 0
     private lateinit var backToast: Toast
-
-    private val home = Home()
+    private val home     = Home()
     private val category = Category()
-    private val cart = Cart()
-    private val account = Myaccount()
+    private val aibot    = AiBot()     // ← lowercase variable
+    private val account  = Myaccount()
 
     private var active: Fragment = home
 
     companion object {
-        private const val ID_HOME = 1
+        private const val ID_HOME     = 1
         private const val ID_CATEGORY = 2
-        private const val ID_CART = 3
-        private const val ID_ACCOUNT = 4
+        private const val ID_BOT      = 3
+        private const val ID_ACCOUNT  = 4
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigation.add(NafisBottomNavigation.Model(ID_HOME, R.drawable.homeicon))
         bottomNavigation.add(NafisBottomNavigation.Model(ID_CATEGORY, R.drawable.categoryicon))
-        bottomNavigation.add(NafisBottomNavigation.Model(ID_CART, R.drawable.carticon))
+        bottomNavigation.add(NafisBottomNavigation.Model(ID_BOT, R.drawable.bot))
         bottomNavigation.add(NafisBottomNavigation.Model(ID_ACCOUNT, R.drawable.myaccount))
 
         if (savedInstanceState == null) {
@@ -54,26 +52,26 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigation.setOnShowListener {
             when (it.id) {
-                ID_HOME -> switchFragment(home)
+                ID_HOME     -> switchFragment(home)
                 ID_CATEGORY -> switchFragment(category)
-                ID_CART -> switchFragment(cart)
-                ID_ACCOUNT -> switchFragment(account)
+                ID_BOT      -> switchFragment(aibot)
+                ID_ACCOUNT  -> switchFragment(account)
             }
         }
-
         bottomNavigation.show(ID_HOME)
+
+        // … rest of your code …
     }
 
     private fun loadAllFragments() {
         supportFragmentManager.beginTransaction()
             .add(R.id.mainframeLayout, home, "home")
             .add(R.id.mainframeLayout, category, "category").hide(category)
-            .add(R.id.mainframeLayout, cart, "cart").hide(cart)
+            .add(R.id.mainframeLayout, aibot, "bot").hide(aibot)       // ← use aibot here
             .add(R.id.mainframeLayout, account, "account").hide(account)
             .commit()
         active = home
     }
-
     private fun switchFragment(target: Fragment) {
         if (target != active) {
             supportFragmentManager.beginTransaction()
@@ -111,4 +109,4 @@ class MainActivity : AppCompatActivity() {
             backPressedTime = System.currentTimeMillis()
         }
     }
-}
+    }

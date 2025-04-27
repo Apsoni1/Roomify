@@ -22,11 +22,10 @@
         app:cnb_textColor="#2B2281"
         ></item>
     <item
-        android:title="My Cart"
-        android:id="@+id/cart"
-        android:icon="@drawable/carticon"
+        android:title="AIbot"
+        android:id="@+id/AIbot"
+        android:icon="@drawable/bot"
         android:enabled="true"
-        app:cnb_iconColor="#2B2281"
         app:cnb_iconTintMode="src_in"
         app:cnb_textColor="#2B2281"
         ></item>

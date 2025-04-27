@@ -1,7 +1,5 @@
-// src/main/java/com/majorproject/roomify/core/di/NetworkModule.kt
 package com.majorproject.roomify.core.di
 
-import com.google.android.datatransport.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -14,13 +12,15 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val BASE_URL = "https://furniture-api.fly.dev/" // ← replace with your base URL
+    private const val BASE_URL_APP = "https://furniture-api.fly.dev/"
+    private const val BASE_URL_RAPIDAPI = "https://openai80.p.rapidapi.com/"
 
     @Provides
     @Singleton
@@ -33,11 +33,7 @@ object NetworkModule {
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply {
-            // Log body in debug builds, headers otherwise
-            level = if (BuildConfig.DEBUG)
-                HttpLoggingInterceptor.Level.BODY
-            else
-                HttpLoggingInterceptor.Level.HEADERS
+            level = HttpLoggingInterceptor.Level.BODY
         }
 
     @Provides
@@ -46,25 +42,44 @@ object NetworkModule {
         loggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient =
         OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor as Interceptor)
+            .addInterceptor(loggingInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .build()
 
     @Provides
     @Singleton
-    fun provideRetrofit(
+    @Named("AppRetrofit")
+    fun provideAppRetrofit(
         gson: Gson,
         okHttpClient: OkHttpClient
     ): Retrofit =
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL_APP)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService =
+    @Named("AIBotRetrofit")
+    fun provideAIBotRetrofit(
+        gson: Gson,
+        okHttpClient: OkHttpClient
+    ): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BASE_URL_RAPIDAPI)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+
+    @Provides
+    @Singleton
+    fun provideApiService(@Named("AppRetrofit") retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideAIBotApiService(@Named("AIBotRetrofit") retrofit: Retrofit): AIBotApiService =
+        retrofit.create(AIBotApiService::class.java)
 }
