@@ -34,14 +34,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_margin="15dp"
-                    android:textSize="19sp"
-                    android:paddingStart="45dp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/string12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
                 <!-- ViewPager Section -->
                 <LinearLayout
@@ -64,33 +64,23 @@
                             android:layout_marginTop="5dp"
                             android:backgroundTint="@color/white"
                             android:background="@drawable/curve_bg1"
-                            app:tint="#6772B0"
+                            app:tint="@color/primary_bg"
                             android:src="@drawable/star_filled"
                             android:layout_width="40dp"
                             android:layout_height="40dp" />
 
                         <TextView
-                            android:layout_toEndOf="@+id/starImg"
                             android:id="@+id/crowdfavTxt"
-                            android:fontFamily="sans-serif-medium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
-                            android:textSize="25sp"
-                            android:layout_marginTop="-5dp"
-                            android:text="@string/string44"
-                            android:textColor="@color/white"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:textSize="12sp"
-                            android:text="@string/string45"
-                            android:fontFamily="sans-serif-medium"
-                            android:textColor="@color/white"
+                            android:layout_marginTop="10dp"
                             android:layout_toEndOf="@+id/starImg"
-                            android:layout_marginHorizontal="12dp"
-                            android:layout_below="@+id/crowdfavTxt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:fontFamily="@font/arapey"
+                            android:text="Crowd Favourites"
+                            android:textColor="@color/white"
+                            android:textSize="25sp" />
+
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -107,37 +97,39 @@
                             android:paddingHorizontal="53dp" />
 
                         <RelativeLayout
-                            android:backgroundTint="@color/white"
-                            android:background="@drawable/curve_bg1"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginBottom="55dp"
                             android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
                             android:layout_marginHorizontal="68dp"
-                            android:layout_height="55dp">
+                            android:layout_marginBottom="30dp"
+                            android:background="@drawable/curve_bg1"
+                            android:backgroundTint="@color/white">
 
                             <TextView
-                                android:textSize="25sp"
-                                android:textColor="@color/LightGray"
-                                android:fontFamily="@font/roboto_bold"
                                 android:id="@+id/categoryTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginStart="25dp" />
+                                android:gravity="center"
+                                android:layout_centerInParent="true"
+                               android:layout_marginStart="60dp"
+                                android:textAllCaps="true"
+                                android:fontFamily="@font/roboto_regular"
+                                android:textColor="@color/fadegrey"
+                                android:textSize="16sp" />
 
                             <LinearLayout
-                                android:background="@drawable/curve_bg2"
-                                android:backgroundTint="#049DA8"
-                                android:layout_alignParentEnd="true"
-                                android:layout_margin="10dp"
-                                android:layout_alignParentBottom="true"
                                 android:layout_width="25dp"
-                                android:layout_height="25dp">
+                                android:layout_height="25dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/curve_bg2"
+                                android:backgroundTint="@color/primary_bg">
 
                                 <ImageView
-                                    android:src="@drawable/arrow_right"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:src="@drawable/arrow_right"
                                     app:tint="@color/white" />
                             </LinearLayout>
                         </RelativeLayout>
@@ -149,14 +141,14 @@
 
                         <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
                             android:id="@+id/dots_indicator"
-                            app:dotsColor="#525D96"
+                            app:dotsColor="@color/VeryLightGray"
                             app:dotsCornerRadius="9dp"
                             app:dotsSize="14dp"
                             app:dotsSpacing="3dp"
                             app:dotsWidthFactor="1"
-                            app:selectedDotColor="#898EB8"
+                            app:selectedDotColor="@color/white"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="62dp"
+                            android:layout_marginBottom="40dp"
                             android:layout_centerHorizontal="true"
                             android:layout_width="wrap_content"
                             android:layout_height="5dp" />
@@ -167,9 +159,9 @@
                 <TextView
                     android:textColor="@color/DarkGray"
                     android:fontFamily="@font/roboto_bold"
-                    android:layout_marginStart="65dp"
                     android:text="@string/string13"
                     android:textSize="19sp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginVertical="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -34,6 +35,8 @@
             android:maxLines="2"
             android:textColor="@android:color/black"
             android:textSize="14sp"
+            android:background="@color/white"
+            android:fontFamily="@font/abhaya_libre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivProductImage"
@@ -44,15 +47,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
             android:layout_marginBottom="8dp"
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvProductName"
-            tools:text="$149.99" />
+            app:layout_constraintVertical_bias="1.0" tools:text="$149.99" />
 
         <TextView
             android:id="@+id/tvOriginalPrice"
@@ -60,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textColor="@android:color/darker_gray"
-            android:textSize="12sp"
+            android:textSize="10sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/tvProductPrice"
             app:layout_constraintStart_toEndOf="@+id/tvProductPrice"

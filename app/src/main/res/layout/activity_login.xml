@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
-                android:text="@string/string19"
+                android:text="LOGIN"
                 android:textColor="@color/orange"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/string18"
+                android:text="Welcome back you’ve been missed!"
                 android:textSize="16sp" />
 
             <EditText
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="8dp"
-                android:text="@string/string14"
+                android:text="Forgot your password?"
                 android:textColor="@color/orange"
                 android:textSize="14sp" />
 
@@ -77,7 +77,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/rounded_button"
                 android:backgroundTint="@color/orange"
-                android:text="@string/string15"
+                android:text="Sign in"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -85,13 +85,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="@string/string16" />
+                android:text="Create new account" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
-                android:text="@string/string17" />
+                android:text="Or continue with" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

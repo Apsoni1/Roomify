@@ -48,7 +48,7 @@
                 android:layout_toEndOf="@id/itemImage"
                 android:background="@color/white"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/string38"
+                android:text="Item Name"
                 android:textColor="#FF0000"
                 android:textSize="22sp" />
 
@@ -65,7 +65,7 @@
                 android:layout_toEndOf="@id/itemImage"
                 android:background="@color/white"
                 android:fontFamily="sans-serif-medium"
-                android:text="@string/string39"
+                android:text="Item Price"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -92,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="0dp"
-                    android:text="@string/string40"
+                    android:text="Delivery by DATE"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="16dp"

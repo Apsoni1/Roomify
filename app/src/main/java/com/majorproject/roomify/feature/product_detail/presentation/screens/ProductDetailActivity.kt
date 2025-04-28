@@ -92,7 +92,6 @@ class ProductDetailActivity : AppCompatActivity() {
         dimensionsTextView = findViewById(R.id.dimensionsTextView)
         weightTextView = findViewById(R.id.weightTextView)
         stockStatusTextView = findViewById(R.id.stockStatusTextView)
-        tagsContainer = findViewById(R.id.tagsContainer)
         fullDescriptionTextView = findViewById(R.id.fullDescriptionTextView)
         addToCartButton = findViewById(R.id.addToCartButton)
         arFragmentContainer = findViewById(R.id.arFragmentContainer)

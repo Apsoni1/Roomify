@@ -1,44 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:clickable="true"
-    android:focusable="true"
-    android:elevation="4dp"
-    android:foreground="?attr/selectableItemBackground"
-    app:cardCornerRadius="8dp"
-    android:backgroundTint="@color/Cream">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp">
 
-    <!-- Using FrameLayout to overlay text on image -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+    <!-- Circle background with gradient -->
+    <FrameLayout
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/circle_background"
+        android:layout_gravity="center">
 
-        <!-- ImageView -->
         <ImageView
             android:id="@+id/category_image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:scaleType="centerCrop"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
             app:srcCompat="@drawable/sofa" />
+    </FrameLayout>
 
-        <!-- TextView for overlaying text on image -->
-        <TextView
-            android:id="@+id/category_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:fontFamily="@font/abhaya_libre"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="@string/string41"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    <!-- Category Text -->
+    <TextView
+        android:id="@+id/category_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sofa"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/abhaya_libre" />
+</LinearLayout>

@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abril_fatface"
                 android:gravity="center"
-                android:text="@string/string43"
+                android:text="Roomy AI"
                 android:textColor="@color/primary_bg"
                 android:textSize="24dp" />
 

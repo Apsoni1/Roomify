@@ -71,22 +71,22 @@
                 android:id="@+id/productNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string21"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
+                android:layout_gravity="start"
                 android:layout_marginTop="16dp"
-                android:layout_gravity="start" />
+                android:fontFamily="sans-serif"
+                android:text="Furniture Name"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <!-- View in 3D Button below Furniture Name -->
             <Button
                 android:id="@+id/viewIn3DButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string22"
+                android:text="View in 3D"
                 android:textSize="10sp"
                 android:layout_marginTop="8dp"
-                android:backgroundTint="@color/Blue"
+                android:backgroundTint="@color/primary_bg"
                 android:textColor="@color/white"
                 android:layout_gravity="start" />
 
@@ -103,18 +103,18 @@
                     android:id="@+id/discountPriceTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/string30"
-                    android:textSize="20sp"
+                    android:text="₹12,000"
+                    android:textSize="24sp"
                     android:textStyle="bold"
-                    android:textColor="@color/lightGreen" />
+                    android:textColor="@color/black" />
                 <!-- Original Price (Striked through) -->
                 <TextView
                     android:id="@+id/originalPriceTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/string31"
+                    android:text="₹15,000"
                     android:textSize="16sp"
-                    android:textColor="@color/fadegrey"
+                    android:textColor="@color/wishlist_full"
                     android:layout_marginStart="12dp"
                     />
 
@@ -125,29 +125,37 @@
                 android:id="@+id/shortDescriptionTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string23"
-                android:textSize="16sp"
+                android:text="A beautifully crafted wooden table perfect for your living room."
+                android:textSize="12sp"
+                android:fontFamily="sans-serif"
                 android:textColor="@color/DarkGray"
                 android:layout_marginTop="12dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/DarkGray"
+                android:layout_marginVertical="16dp"/>
 
             <!-- Specifications Title -->
             <TextView
                 android:id="@+id/specificationsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string24"
-                android:textSize="20sp"
+                android:text="Specifications"
+                android:fontFamily="sans-serif"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginTop="24dp" />
+               />
 
             <!-- Wood Type -->
             <TextView
                 android:id="@+id/woodTypeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string25"
-                android:textSize="16sp"
+                android:text="Wood Type: Oak"
+                android:fontFamily="sans-serif"
+                android:textSize="14sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="8dp" />
 
@@ -156,8 +164,9 @@
                 android:id="@+id/finishTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string26"
-                android:textSize="16sp"
+                android:text="Finish: Natural Matte"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
                 android:textColor="@color/black"
                 android:layout_marginTop="4dp" />
 
@@ -166,8 +175,9 @@
                 android:id="@+id/dimensionsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string27"
-                android:textSize="16sp"
+                android:text="Dimensions: 60cm (L) x 45cm (W) x 90cm (H)"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
                 android:textColor="@color/black"
                 android:layout_marginTop="4dp" />
 
@@ -176,8 +186,9 @@
                 android:id="@+id/weightTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string28"
-                android:textSize="16sp"
+                android:text="Weight: 12 kg"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
                 android:textColor="@color/black"
                 android:layout_marginTop="4dp" />
 
@@ -186,41 +197,38 @@
                 android:id="@+id/stockStatusTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string29"
-                android:textSize="16sp"
+                android:text="Availability: In Stock"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
                 android:textColor="@color/lightGreen"
                 android:layout_marginTop="4dp" />
 
-
-            <!-- Tags Container -->
-            <LinearLayout
-                android:id="@+id/tagsContainer"
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="start" />
-
+                android:layout_height="2dp"
+                android:background="@color/DarkGray"
+                android:layout_marginVertical="16dp"/>
             <!-- Full Description Title -->
             <TextView
                 android:id="@+id/fullDescriptionTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string32"
-                android:textSize="20sp"
+                android:text="Description"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginTop="24dp" />
+                />
 
             <!-- Full Description -->
             <TextView
                 android:id="@+id/fullDescriptionTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string33"
-                android:textSize="16sp"
+                android:text="This exquisite oak wood table is handcrafted to perfection, featuring a beautiful natural matte finish that complements any interior decor. It's lightweight yet sturdy, making it an ideal piece for daily use."
+                android:textSize="14sp"
+                android:fontFamily="sans-serif"
                 android:textColor="@color/fadegrey"
+
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="24dp" />
 
@@ -229,9 +237,9 @@
                 android:id="@+id/addToCartButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/string34"
+                android:text="Add to Cart"
                 android:textAllCaps="false"
-                android:backgroundTint="@color/orange"
+                android:backgroundTint="@color/primary_bg"
                 android:textColor="@color/white"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="16dp" />

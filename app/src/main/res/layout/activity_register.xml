@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string35"
+                android:text="SIGN UP"
                 android:textSize="40sp"
                 android:textStyle="bold"
                 android:textColor="@color/orange"
@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string36"
+                android:text="Create an account to explore new home!"
                 android:textSize="16sp"
                 android:layout_marginTop="8dp"
                 android:gravity="center"/>
@@ -72,7 +72,7 @@
                 android:id="@+id/registerButton"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="@string/string15"
+                android:text="Sign up"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/orange"
                 android:textColor="@android:color/white"
@@ -82,13 +82,13 @@
                 android:id="@+id/loginText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string37"
+                android:text="Already have an account? Login here!"
                 android:layout_marginTop="16dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/string17"
+                android:text="Or continue with"
                 android:layout_marginTop="60dp"/>
 
             <LinearLayout
