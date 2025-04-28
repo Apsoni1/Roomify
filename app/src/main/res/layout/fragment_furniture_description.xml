@@ -15,7 +15,7 @@
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Furniture Name"
+            android:text=""
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
@@ -24,35 +24,35 @@
             android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description goes here"
+            android:text="@string/string48"
             android:layout_marginBottom="12dp" />
 
         <TextView
             android:id="@+id/tvCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Category"
+            android:text="@string/string49"
             android:layout_marginBottom="4dp" />
 
         <TextView
             android:id="@+id/tvWoodType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wood Type"
+            android:text="@string/string50"
             android:layout_marginBottom="4dp" />
 
         <TextView
             android:id="@+id/tvFinish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Finish"
+            android:text="@string/string51"
             android:layout_marginBottom="4dp" />
 
         <TextView
             android:id="@+id/tvDimensions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dimensions"
+            android:text="@string/string52"
             android:layout_marginBottom="4dp" />
     </LinearLayout>
 </ScrollView>

@@ -45,7 +45,7 @@
         android:paddingEnd="32dp"
         android:shadowColor="@android:color/black"
         android:shadowRadius="8"
-        android:text="point_your_phone_down"
+        android:text="@string/string20"
         android:textColor="@android:color/white"
         android:textSize="28sp"
         android:visibility="visible"
