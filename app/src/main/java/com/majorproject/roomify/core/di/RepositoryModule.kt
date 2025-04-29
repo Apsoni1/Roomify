@@ -10,6 +10,8 @@ import com.majorproject.roomify.feature.furniture_list.data.repo_impl.CategoryRe
 import com.majorproject.roomify.feature.furniture_list.data.repo_impl.ProductRepositoryImpl
 import com.majorproject.roomify.feature.furniture_list.domain.repo.CategoryRepository
 import com.majorproject.roomify.feature.furniture_list.domain.repo.ProductRepository
+import com.majorproject.roomify.feature.search.data.repo_impl.SearchRepositoryImpl
+import com.majorproject.roomify.feature.search.domain.repo.SearchRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -49,4 +51,11 @@ abstract class RepositoryModule {
     abstract fun bindAiBotRepository(
         repositoryImpl: AiBotRepositoryImpl
     ): AiBotRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindSearchRepository(
+        repositoryImpl: SearchRepositoryImpl
+    ): SearchRepository
+
 }

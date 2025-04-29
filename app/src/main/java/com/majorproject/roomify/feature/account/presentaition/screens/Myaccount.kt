@@ -12,6 +12,8 @@ import com.majorproject.roomify.feature.about.presentaition.screens.AboutApp
 import com.majorproject.roomify.feature.orders.presentaition.screens.YourOrders
 import com.majorproject.roomify.feature.settings.presentaition.screens.ChooseLanguage
 import com.majorproject.roomify.feature.support.presentaition.screens.CustomerSupport
+import com.google.firebase.auth.FirebaseAuth
+import com.majorproject.roomify.feature.auth.presentation.view.LoginActivity
 
 class Myaccount : Fragment() {
 
@@ -23,6 +25,8 @@ class Myaccount : Fragment() {
     private lateinit var wishlistBtn: TextView
     private lateinit var logoutBtn: TextView
 
+    private lateinit var usernameTextView: TextView
+    private lateinit var userEmailTextView: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,7 +41,13 @@ class Myaccount : Fragment() {
         ordersBtn = view.findViewById(R.id.orders)
         wishlistBtn = view.findViewById(R.id.Wishlist)
         logoutBtn = view.findViewById(R.id.logout)
-
+        usernameTextView = view.findViewById(R.id.username)
+        userEmailTextView = view.findViewById(R.id.userEmail)
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        currentUser?.let {
+            usernameTextView.text = it.displayName ?: "User"
+            userEmailTextView.text = it.email ?: "No Email"
+        }
         // set click listeners
         languageBtn.setOnClickListener {
             startActivity(Intent(requireContext(), ChooseLanguage::class.java))
@@ -57,6 +67,16 @@ class Myaccount : Fragment() {
         ordersBtn.setOnClickListener {
             startActivity(Intent(requireContext(), YourOrders::class.java))
             activity?.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+        }
+
+        logoutBtn.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+
+            // Redirect to LoginActivity or any relevant screen
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            activity?.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
         }
 
         // You can similarly add for viewCartBtn, wishlistBtn, logoutBtn if needed.

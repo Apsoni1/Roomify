@@ -35,6 +35,7 @@ import com.majorproject.roomify.feature.common.adapters.ViewPagerAdapterHome
 import com.majorproject.roomify.feature.furniture_list.presentation.screen.FurnitureListActivity
 import com.majorproject.roomify.feature.home.presentaition.viewmodel.HomeViewModel
 import com.majorproject.roomify.feature.product_detail.presentation.screens.ProductDetailActivity
+import com.majorproject.roomify.feature.search.presentation.screens.SearchActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -136,16 +137,32 @@ class Home : Fragment() {
             textSize = 14f
         }
 
+        // Prevent typing directly in the search view on Home fragment
+        searchView.isSubmitButtonEnabled = false
+        searchEditText?.isFocusable = false
+        searchEditText?.isClickable = true
+
+        // Handle click on the search view to launch SearchActivity
+        searchView.setOnClickListener {
+            val intent = Intent(requireContext(), SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        // Just in case, also handle submit actions
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
-
+                    // Launch SearchActivity with the query
+                    val intent = Intent(requireContext(), SearchActivity::class.java).apply {
+                        putExtra("query", it)
+                    }
+                    startActivity(intent)
                 }
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // We'll handle this in the SearchActivity for real-time search
+                // We'll handle real-time search in SearchActivity
                 return true
             }
         })

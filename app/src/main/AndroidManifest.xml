@@ -10,6 +10,7 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
+
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -28,10 +29,16 @@
         android:theme="@style/Theme.Roomify"
         tools:targetApi="31">
         <activity
+            android:name=".feature.search.presentation.screens.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".feature.ARViewer.presetation.ArViewerActivity"
             android:exported="false" />
         <activity
             android:name=".feature.product_detail.presentation.screens.ProductDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.furniture_list.presentation.screen.FurnitureListActivity"
             android:exported="false" />
         <activity
             android:name=".feature.auth.presentation.view.LoginActivity"
