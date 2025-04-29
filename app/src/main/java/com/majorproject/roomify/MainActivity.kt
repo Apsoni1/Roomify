@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import com.majorproject.roomify.feature.ai_bot.presentation.screens.AiBot
 import com.majorproject.roomify.feature.account.presentaition.screens.Myaccount
 import com.majorproject.roomify.feature.category.presentaition.screens.CategoryScreen as Category
+import com.majorproject.roomify.feature.category_detail.presentation.screen.CategoryDetailList
 import com.majorproject.roomify.feature.home.presentaition.screens.Home
-import com.majorproject.roomify.feature.category_detail.presentation.screen.CategoryDetailList// ← add this!
 import com.nafis.bottomnavigation.NafisBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,18 +17,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigation: NafisBottomNavigation
     private var backPressedTime: Long = 0
     private lateinit var backToast: Toast
-    private val home     = Home()
+    private val home = Home()
     private val category = Category()
-    private val aibot    = AiBot()     // ← lowercase variable
-    private val account  = Myaccount()
+    private val aibot = AiBot()
+    private val account = Myaccount()
 
     private var active: Fragment = home
 
     companion object {
-        private const val ID_HOME     = 1
-        private const val ID_CATEGORY = 2
-        private const val ID_BOT      = 3
-        private const val ID_ACCOUNT  = 4
+        const val ID_HOME = 1
+        const val ID_CATEGORY = 2
+        const val ID_BOT = 3
+        const val ID_ACCOUNT = 4
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,27 +52,26 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigation.setOnShowListener {
             when (it.id) {
-                ID_HOME     -> switchFragment(home)
+                ID_HOME -> switchFragment(home)
                 ID_CATEGORY -> switchFragment(category)
-                ID_BOT      -> switchFragment(aibot)
-                ID_ACCOUNT  -> switchFragment(account)
+                ID_BOT -> switchFragment(aibot)
+                ID_ACCOUNT -> switchFragment(account)
             }
         }
         bottomNavigation.show(ID_HOME)
-
-        // … rest of your code …
     }
 
     private fun loadAllFragments() {
         supportFragmentManager.beginTransaction()
             .add(R.id.mainframeLayout, home, "home")
             .add(R.id.mainframeLayout, category, "category").hide(category)
-            .add(R.id.mainframeLayout, aibot, "bot").hide(aibot)       // ← use aibot here
+            .add(R.id.mainframeLayout, aibot, "bot").hide(aibot)
             .add(R.id.mainframeLayout, account, "account").hide(account)
             .commit()
         active = home
     }
-    private fun switchFragment(target: Fragment) {
+
+    fun switchFragment(target: Fragment) {
         if (target != active) {
             supportFragmentManager.beginTransaction()
                 .hide(active)
@@ -82,31 +81,61 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // New method to update both fragment and bottom navigation
+    fun switchToFragmentWithNav(target: Fragment, navId: Int) {
+        switchFragment(target)
+        bottomNavigation.show(navId)
+    }
+
+    // Method to handle navigation to child fragments (like CategoryDetailList)
+    fun navigateToChildFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.mainframeLayout, fragment)
+            .hide(active)
+            .addToBackStack(null)
+            .commit()
+        active = fragment
+    }
 
     override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            // We have fragments in the back stack
+            supportFragmentManager.popBackStack()
 
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.mainframeLayout)
-        if (currentFragment is CategoryDetailList && active == category) {
-
-            super.onBackPressed()
-            return
-        }
-
-
-        if (active != home) {
-            bottomNavigation.show(ID_HOME)
+            // Find the current visible fragment
+            val fragments = supportFragmentManager.fragments
+            for (fragment in fragments) {
+                if (fragment.isVisible) {
+                    active = fragment
+                    updateBottomNavFromFragment(fragment)
+                    break
+                }
+            }
+        } else if (active != home) {
+            // If we're on a main tab but not home, go back to home
+            switchToFragmentWithNav(home, ID_HOME)
         } else {
-            super.onBackPressed()
-        }
-
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            backToast.cancel()
-            super.onBackPressed() // Only call super after second press
-            finishAffinity()      // Finish the whole app
-        } else {
-            backToast = Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT)
-            backToast.show()
-            backPressedTime = System.currentTimeMillis()
+            // Handle exit with double back press
+            if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                backToast.cancel()
+                super.onBackPressed()
+                finishAffinity()
+            } else {
+                backToast = Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT)
+                backToast.show()
+                backPressedTime = System.currentTimeMillis()
+            }
         }
     }
+
+    // Helper method to update bottom navigation based on the current fragment
+    private fun updateBottomNavFromFragment(fragment: Fragment) {
+        when (fragment) {
+            is Home -> bottomNavigation.show(ID_HOME)
+            is Category -> bottomNavigation.show(ID_CATEGORY)
+            is AiBot -> bottomNavigation.show(ID_BOT)
+            is Myaccount -> bottomNavigation.show(ID_ACCOUNT)
+            // Don't update nav for child fragments - keep parent tab selected
+        }
     }
+}

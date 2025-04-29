@@ -16,12 +16,15 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.majorproject.roomify.R
+import com.majorproject.roomify.core.data.RecentlyViewedManager
 import com.majorproject.roomify.feature.ARViewer.presetation.ArViewerActivity
 import com.majorproject.roomify.feature.furniture_list.data.dto.ProductDto
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.text.NumberFormat
 import java.util.Locale
-
+import javax.inject.Inject
+@AndroidEntryPoint
 class ProductDetailActivity : AppCompatActivity() {
 
     private lateinit var productImageView: ImageView
@@ -42,7 +45,8 @@ class ProductDetailActivity : AppCompatActivity() {
     private lateinit var addToCartButton: Button
     private lateinit var arFragmentContainer: View
     val randomNumber = (1..4).random()
-
+    @Inject
+    lateinit var recentlyViewedManager: RecentlyViewedManager
     private var isInWishlist = false
     private var currentProduct: ProductDto? = null
     private var isARViewActive = false
@@ -68,6 +72,8 @@ class ProductDetailActivity : AppCompatActivity() {
         // Set product data if available
         product?.let {
             displayProductDetails(it)
+            addToRecentlyViewed(it)
+
         } ?: run {
             // Handle case where product is null
             Toast.makeText(this, "Error loading product details", Toast.LENGTH_SHORT).show()
@@ -77,7 +83,10 @@ class ProductDetailActivity : AppCompatActivity() {
         // Set up click listeners
         setupClickListeners()
     }
-
+    private fun addToRecentlyViewed(product: ProductDto) {
+        // Add this product to recently viewed
+        recentlyViewedManager.addToRecentlyViewed(product)
+    }
     private fun initViews() {
         productImageView = findViewById(R.id.productImageView)
         wishlistEmptyButton = findViewById(R.id.wishlistEmpty)

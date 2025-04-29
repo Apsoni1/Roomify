@@ -15,6 +15,7 @@
     <color name="lightpurple">#BB99E9</color>
     <color name="l_purple">#CAB5EB</color>
     <!-- Light red for selected state -->
+    <color name="MostLightGray">#74E6E6E6</color>
 
     <color name="DarkGray">#A9A9A9</color>
     <color name="Platinum">#F8F7F6</color>

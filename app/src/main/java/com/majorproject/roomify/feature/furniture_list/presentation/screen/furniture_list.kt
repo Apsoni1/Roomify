@@ -23,7 +23,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-
+@AndroidEntryPoint
 class FurnitureListActivity : AppCompatActivity() {
     private val vm: ProductViewModel by viewModels()
 
@@ -35,6 +35,9 @@ class FurnitureListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_furniture_list)
+        window.statusBarColor = getColor(android.R.color.white)
+        window.decorView.systemUiVisibility = window.decorView.systemUiVisibility or
+                android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
         // View binding
         recyclerView       = findViewById(R.id.rvFurniture)

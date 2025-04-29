@@ -1,10 +1,10 @@
-package com.majorproject.roomify.feature.category.presentaition.viewmodel
+package com.majorproject.roomify.feature.home.presentaition.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.majorproject.roomify.feature.category.domain.model.Category
-import com.majorproject.roomify.feature.home.domain.usecase.FetchSecondItemsOfEachCategoryUseCase
 import com.majorproject.roomify.feature.furniture_list.data.dto.ProductDto
+import com.majorproject.roomify.feature.home.domain.usecase.FetchSecondItemsOfEachCategoryUseCase
 import com.majorproject.roomify.feature.home.domain.usecase.GetCategoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoryViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val getCategoriesUseCase: GetCategoriesUseCase,
     private val fetchSecondItemsOfEachCategoryUseCase: FetchSecondItemsOfEachCategoryUseCase
 ) : ViewModel() {

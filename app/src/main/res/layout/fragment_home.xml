@@ -4,75 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.home.presentaition.screens.Home">
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
         <!--  Main container for all content  -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="8dp">
-                <RelativeLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="8dp">
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/imageButton"
+                    android:background="@drawable/search_shape"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="Sofa,Desk,Chair etc">
+
+                </androidx.appcompat.widget.SearchView><!-- Apply custom background -->
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/transparent"
                     android:padding="8dp"
-                    android:layout_marginTop="20dp"
-                    >
-                    <androidx.appcompat.widget.SearchView
-                        android:id="@+id/search_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toStartOf="@+id/imageButton"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        app:iconifiedByDefault="false"
-                        app:queryHint="Sofa,Desk,Chair etc"
-                        android:background="@drawable/search_shape" >
+                    android:scaleType="centerInside"
+                    android:src="@drawable/notification_icon"
+                    app:tint="@color/Blue"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
-                    </androidx.appcompat.widget.SearchView><!-- Apply custom background -->
-
-                    <ImageButton
-                        android:id="@+id/imageButton"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:background="@color/transparent"
-                        android:padding="8dp"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/notification_icon"
-                        app:tint="@color/Blue" />
-
-                </RelativeLayout>
+            </RelativeLayout>
             <!--  Search Bar  -->
 
             <!--  HorizontalScrollView for Categories  -->
-            <HorizontalScrollView
-                android:id="@+id/horizontal_scroll"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:scrollbars="horizontal">
+                android:nestedScrollingEnabled="false"
+                android:paddingHorizontal="16dp" />
 
-                <LinearLayout android:id="@+id/category_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal"/>
-            </HorizontalScrollView>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                app:icon="@drawable/arrow_forward"
+                app:iconGravity="end"
+                android:id="@+id/moreCategories"
+                android:layout_marginTop="5dp"
+                android:text="More Categories"
+                android:layout_marginHorizontal="16dp"
+                app:iconTint="@color/black"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/black"
+                app:backgroundTint="@color/MostLightGray"
+                android:layout_marginBottom="25dp"
+                android:textAlignment="textStart"
+                android:backgroundTint="@color/MostLightGray"
+                android:background="@drawable/more_background"
+                android:layout_height="match_parent">
+
+            </com.google.android.material.button.MaterialButton>
+
+
             <RelativeLayout
                 android:id="@+id/relativeLayoutForViewPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:padding="8dp">
 
                 <!-- Background ImageView -->
                 <ImageView
                     android:id="@+id/Bg_image"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
-                    android:src="@drawable/bg_viewpager"
+                    android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
-                    android:layout_alignParentTop="true"/>
+                    android:src="@drawable/bg_viewpager" />
 
                 <!-- ViewPager2 on top of ImageView -->
                 <androidx.viewpager2.widget.ViewPager2
@@ -80,8 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/Bg_image"
-                    android:layout_alignParentStart="true"
-                   />
+                    android:layout_alignParentStart="true" />
 
                 <!-- TabLayout on top of ImageView, below ViewPager2 -->
                 <com.google.android.material.tabs.TabLayout
@@ -89,133 +113,212 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/discount_sale_viewpager"
-                    android:layout_centerHorizontal="true"
                     android:layout_alignBottom="@+id/discount_sale_viewpager"
+                    android:layout_centerHorizontal="true"
                     android:padding="8dp"
-                    app:tabIndicatorGravity="center"
-                    app:tabIndicatorColor="@color/black"/>
+                    app:tabIndicatorColor="@color/black"
+                    app:tabIndicatorGravity="center" />
             </RelativeLayout>
 
-<!--            videoview display-->
-            <LinearLayout
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/relativeLayoutForViewPager"
-                android:layout_margin="8dp"
-                android:background="@color/white"
-                android:backgroundTintMode="screen"
-                android:orientation="vertical">
-
+                android:paddingTop="10dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/viewin3d"
+                android:paddingHorizontal="8dp">
                 <TextView
-                    android:id="@+id/Sales_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/toptext"
+                    android:text="Roomify Creative "
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:fontFamily="@font/roboto_medium"
-                    android:gravity="center_horizontal"
-                    android:padding="8dp"
-                    android:paddingBottom="4dp"
-                    android:text="AUGMENTED REALITY"
-                    android:textColor="@color/BlueBlue"
-                    android:textSize="18sp" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@color/DarkGray"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"></TextView>
 
                 <TextView
-                    android:id="@+id/Description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/abhaya_libre"
-                    android:gravity="center_horizontal"
-                    android:text="Enhance your experiences by manifesting real-time Designing"
-                    android:textColor="@color/BlackBlack"
-                    android:textSize="12sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:orientation="vertical">
-
-                    <VideoView
-                        android:id="@+id/Video_home"
-                        android:layout_width="350dp"
-                        android:layout_height="250dp"
-                        android:layout_gravity="center"
-
-                        />
-
-                </LinearLayout>
-
-
-                <Button
-                    android:id="@+id/Start_button"
+                    android:id="@+id/abovetext"
+                    android:text="See how items look and fit in your home, before you buy "
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:fontFamily="@font/roboto_medium"
+                    app:layout_constraintTop_toBottomOf="@+id/toptext" android:textColor="@color/black"
                     android:layout_width="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content"></TextView>
+
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="viewinar.json"
+                    app:lottie_loop="true"
+                    app:lottie_renderMode="hardware"
+                    app:layout_constraintTop_toBottomOf="@+id/abovetext"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+                <TextView
+                    android:id="@+id/viewInAr"
+                    android:text="View in 3d"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@color/DarkGray"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="wrap_content"
+                    android:padding="10dp"
+                    android:backgroundTint="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/edittext_background"
+                    android:layout_height="wrap_content"></TextView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:textSize="25sp"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="16dp"
+                android:text="Recently Viewed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <TextView
+                android:textSize="15sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textAlignment="center"
+                android:id="@+id/norecent"
+                android:layout_marginVertical="10dp"
+                android:text="No Recent Views"
+                android:textColor="@color/DarkGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRecentlyViewed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:nestedScrollingEnabled="false"
+                android:paddingHorizontal="16dp" />
+
+            <TextView
+                android:textSize="25sp"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="16dp"
+                android:text="AI Space Stylist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/yourAi"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="40dp"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="8dp"
+                app:cardCornerRadius="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:paddingVertical="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:backgroundTint="@color/LightBlue"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="Shop Now"
-                    android:textColor="@color/Blue"
-                    android:textSize="12sp" />
+                    android:padding="8dp">
 
-            </LinearLayout>
-<!--            sales card view display-->
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:layout_marginTop="16dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:elevation="4dp"
-                android:foreground="?attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:src="@drawable/home_1"
-                    android:scaleType="fitXY"/>
-            </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/textViewRoomy"
+                        android:layout_width="150dp"
+                        android:layout_height="140dp"
+                        android:paddingBottom="12dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Hi, I am Roomy AI — your own AI Stylist!"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:background="@drawable/img_11"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:layout_margin="8dp"
-                android:layout_marginTop="20dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:elevation="4dp"
-                android:foreground="?attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:src="@drawable/home_2"
-                    android:scaleType="fitXY"/>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:layout_margin="8dp"
-                android:layout_marginTop="20dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:elevation="6dp"
-                android:foreground="?attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:src="@drawable/home_3"
-                    android:scaleType="fitXY"/>
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lottieAnimationView"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="roomyai.json"
+                        app:lottie_loop="true"
+                        app:lottie_renderMode="hardware"
+                        app:layout_constraintTop_toBottomOf="@id/textViewRoomy"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+                    <TextView
+                        android:text="powered by OpenAi"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto_regular"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"></TextView>
+
+                    <TextView
+                        android:text="Let's Style Together ⭐"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif-black"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textColor="@color/DarkGray"
+                        android:layout_width="wrap_content"
+                        android:padding="10dp"
+                        android:backgroundTint="@color/MostLightGray"
+                        android:background="@drawable/more_background"
+                        android:layout_height="wrap_content"></TextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.cardview.widget.CardView>
 
 
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:text="View all furnitures"
+                android:id="@+id/viewall"
+                android:paddingVertical="20dp"
+                app:backgroundTint="@color/MostLightGray"
+                app:iconGravity="end"
+                android:layout_marginHorizontal="10dp"
+                android:textColor="@color/black"
+                app:iconTint="@color/black"
+                android:textAlignment="textStart"
+                app:icon="@drawable/arrow_forward"
+                android:backgroundTint="@color/MostLightGray"
+                android:background="@drawable/more_background"
+                android:layout_height="wrap_content"></com.google.android.material.button.MaterialButton>
         </LinearLayout>
     </ScrollView>
 

@@ -12,10 +12,10 @@ import com.majorproject.roomify.R
 import com.majorproject.roomify.feature.category.domain.model.Category
 
 
-class CategoryListAdapter(
+class HomeListAdapter(
     private var categories: List<Category>,
     private val onItemClick: (Category) -> Unit
-) : RecyclerView.Adapter<CategoryListAdapter.CategoryViewHolder>() {
+) : RecyclerView.Adapter<HomeListAdapter.CategoryViewHolder>() {
 
     class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val categoryImage: ImageView = itemView.findViewById(R.id.imageFurniture)
@@ -24,7 +24,7 @@ class CategoryListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_category2, parent, false)
+            .inflate(R.layout.item_category3, parent, false)
         return CategoryViewHolder(view)
     }
 
@@ -44,9 +44,7 @@ class CategoryListAdapter(
 
     fun updateList(newList: List<Category>) {
         val oldList = categories
-        categories = newList
-        // For debugging, you could log the old and new list sizes
-        Log.d("CategoryAdapter", "Updating list: old=${oldList.size}, new=${newList.size}")
+        categories = newList.reversed()   // ✅ Reversing the list here
         notifyDataSetChanged()
     }
 }

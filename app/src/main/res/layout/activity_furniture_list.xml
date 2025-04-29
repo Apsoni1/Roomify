@@ -3,31 +3,58 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Small Error Text at Top -->
     <TextView
         android:id="@+id/errorTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Error loading products"
         android:textColor="@android:color/holo_red_dark"
-        android:visibility="gone"
         android:textSize="16sp"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-       />
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="All Furnitures"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto_regular"
+        android:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/errorTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        />
+
+    <!-- RecyclerView for Furnitures -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFurniture"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:padding="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        />
+
+    <!-- Progress Bar (Center) -->
     <ProgressBar
         android:id="@+id/fullScreenProgress"
         android:layout_width="48dp"
@@ -38,14 +65,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Full-screen error message -->
+    <!-- Full Screen Error -->
     <TextView
         android:id="@+id/fullScreenError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Something went wrong!"
         android:textColor="@android:color/holo_red_dark"
-        android:visibility="gone"
         android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
